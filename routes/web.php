@@ -19,5 +19,8 @@ Auth::routes();
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkAdmin']], function () {
     Route::get('/', 'Admin\DashBoard\indexController@index')->name('dashboardHome');
     Route::resource('user', 'Admin\Users\userController');
+    Route::resource('driver', 'Admin\Users\DriverController');
+    Route::resource('store', 'Admin\Users\StoreController');
+    
 
 });

@@ -35,19 +35,20 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('user.index')}}" class="nav-link active">
+                                <a href="{{route('user.index')}}"
+                                   class="nav-link {{Request::segment(2)=='user' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>الكل</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="./index2.html" class="nav-link">
+                                <a href="{{route('driver.index')}}" class="nav-link {{Request::segment(2)=='driver' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>السائقين</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="./index3.html" class="nav-link">
+                                <a href="{{route('user.index')}}" class="nav-link {{Request::segment(2)=='store' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>
                                         المتاجر
@@ -55,7 +56,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="./index3.html" class="nav-link">
+                                <a href="./index3.html" class="nav-link {{Request::segment(2)=='customer' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>
                                         العملاء
@@ -63,7 +64,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="./index3.html" class="nav-link">
+                                <a href="./index3.html" class="nav-link {{Request::segment(2)=='moderator' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>
                                         المشرفين

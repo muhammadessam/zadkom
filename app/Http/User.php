@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'profile_pic'
     ];
 
     /**
@@ -37,4 +37,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function driver()
+    {
+        return $this->hasOne(Driver::class, 'user_id', 'id');
+    }
+
+    public function store()
+    {
+        return $this->hasOne(Store::class, 'user_id', 'id');
+    }
+
 }
