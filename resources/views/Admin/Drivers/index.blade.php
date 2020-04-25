@@ -15,7 +15,7 @@
                         <thead>
                         <tr>
                             <th>لاسم</th>
-                            <th>الايميل</th>
+                            <th>الجوال</th>
                             <th>الصورة</th>
                             <th>نوع السيارة</th>
                             <th>اجراء</th>
@@ -25,13 +25,20 @@
                         @foreach($drivers as $driver)
                             <tr>
                                 <td>{{$driver->user->name}}</td>
-                                <td>{{$driver->phone}}</td>
-                                <td><img style="width: 20px; height: 20px" src="{{asset($driver->profile_pic)}}"
+                                <td>{{$driver->user->phone}}</td>
+                                <td><img style="width: 50px; height: 50px" src="{{asset($driver->user->profile_pic)}}"
                                          alt="لم يضع صورة شخصية"></td>
                                 <td style="text-align: center">{{$driver->user->type}}</td>
                                 <td style="text-align: center">
                                     <a class="btn btn-primary" href="{{route('driver.edit', $driver)}}"><i
                                             class="fa fa-edit"></i></a>
+                                    <form style="display: inline-block" action="{{route('driver.destroy', $driver)}}"
+                                          method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger" onclick="return myFunction();"><i
+                                                class="fa fa-trash"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
@@ -39,7 +46,7 @@
                         <tfoot>
                         <tr>
                             <th>لاسم</th>
-                            <th>الايميل</th>
+                            <th>الجوال</th>
                             <th>الصورة</th>
                             <th>النوع</th>
                             <th>اجراء</th>
@@ -73,5 +80,10 @@
                 "info": false,
             });
         });
+
+        function myFunction() {
+            if (!confirm("هل تريد تاكيد الخذف"))
+                event.preventDefault();
+        }
     </script>
 @endsection

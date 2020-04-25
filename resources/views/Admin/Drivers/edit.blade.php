@@ -4,20 +4,22 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-lg-between">
-                    <h3 class="card-title">اضافة سائق</h3>
+                    <h3 class="card-title">تعديل سائق</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
 
-                            <form action="{{route('driver.store')}}" method="post" enctype="multipart/form-data">
+                            <form action="{{route('driver.update', $driver)}}" method="post"
+                                  enctype="multipart/form-data">
                                 @csrf
+                                @method('patch')
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">الاسم</label>
                                     <input type="text" name="name"
                                            class="form-control @error('name') is-invalid @enderror" id="name"
-                                           placeholder="الاسم " value="{{old('name')}}">
+                                           value="{{$driver->user->name}}">
                                     @error('name')
                                     <div style="margin-top: 2px" class="alert alert-danger">
                                         {{$message}}
@@ -27,7 +29,8 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">الايميل</label>
-                                    <input type="email" required name="email" value="{{old('email')}}" class="form-control @error('email') is-invalid @enderror" id="name"
+                                    <input type="email" required name="email" value="{{$driver->user->email}}"
+                                           class="form-control @error('email') is-invalid @enderror" id="name"
                                            placeholder="الايميل ">
                                     @error('email')
                                     <div style="margin-top: 2px" class="alert alert-danger">
@@ -37,7 +40,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">كلمة السر</label>
-                                    <input type="password" required name="password" class="form-control @error('password') is-invalid @enderror" id="password"
+                                    <input type="password" name="password"
+                                           class="form-control @error('password') is-invalid @enderror" id="password"
                                            placeholder="تاكيد كلمة السر ">
                                     @error('password')
                                     <div style="margin-top: 2px" class="alert alert-danger">
@@ -47,7 +51,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">تاكيد كلمة السر</label>
-                                    <input type="password" required name="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror"
+                                    <input type="password" name="password_confirmation"
+                                           class="form-control @error('password_confirmation') is-invalid @enderror"
                                            id="password"
                                            placeholder="تاكيد كلمة السر ">
                                 </div>
@@ -56,7 +61,9 @@
                                     <label for="exampleInputFile">صورة شخصية</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input @error('profile_pic') is-invalid @enderror" name="profile_pic"
+                                            <input type="file"
+                                                   class="custom-file-input  @error('profile_pic') is-invalid @enderror"
+                                                   name="profile_pic"
                                                    id="exampleInputFile" value="{{old('profile_pic')}}">
 
                                             <label class="custom-file-label" for="exampleInputFile">الصورة
@@ -75,7 +82,8 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">الهاتف</label>
-                                    <input type="text" name="phone" value="{{old('phone')}}" class="form-control  @error('phone') is-invalid @enderror" id="phone"
+                                    <input type="tel" name="phone" value="{{$driver->user->phone}}"
+                                           class="form-control  @error('phone') is-invalid @enderror" id="phone"
                                            placeholder="الجوال ">
                                     @error('phone')
                                     <div style="margin-top: 2px" class="alert alert-danger">
@@ -88,7 +96,9 @@
                                     <label for="exampleInputFile">صورة البطاقة شخصية</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input @error('id_pic') is-invalid @enderror" name="id_pic"
+                                            <input type="file"
+                                                   class="custom-file-input @error('id_pic') is-invalid @enderror"
+                                                   name="id_pic"
                                                    id="exampleInputFile" value="{{old('id_pic')}}">
 
                                             <label class="custom-file-label" for="exampleInputFile">الصورة البطاقة
@@ -109,7 +119,9 @@
                                     <label for="exampleInputFile">صورة رخصة القيادة</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input @error('license_pic') is-invalid @enderror" name="license_pic"
+                                            <input type="file"
+                                                   class="custom-file-input @error('license_pic') is-invalid @enderror"
+                                                   name="license_pic"
                                                    id="exampleInputFile" value="{{old('license_pic')}}">
 
                                             <label class="custom-file-label" for="exampleInputFile">الصورة رخصة
@@ -130,7 +142,9 @@
                                     <label for="exampleInputFile">صورة التامين الطبي</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input @error('insurance_pic') is-invalid @enderror" name="insurance_pic"
+                                            <input type="file"
+                                                   class="custom-file-input @error('insurance_pic') is-invalid @enderror"
+                                                   name="insurance_pic"
                                                    id="exampleInputFile" value="{{old('insurance_pic')}}">
 
                                             <label class="custom-file-label" for="exampleInputFile">الصورة التامين
@@ -148,7 +162,7 @@
                                 </div>
 
 
-                                <button class="btn btn-primary" type="submit">اضافة</button>
+                                <button class="btn btn-primary" type="submit">تعديل</button>
                             </form>
                         </div>
                     </div>

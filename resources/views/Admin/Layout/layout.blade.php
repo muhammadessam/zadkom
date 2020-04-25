@@ -121,6 +121,8 @@
 <script src="{{asset('plugins/datatables/jquery.dataTables.js')}}"></script>
 <script src="{{asset('plugins/datatables/dataTables.bootstrap4.js')}}"></script>
 
+@include('sweetalert::alert')
+
 @yield('javascript')
 </body>
 </html>

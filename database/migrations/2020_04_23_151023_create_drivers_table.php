@@ -15,12 +15,11 @@ class CreateDriversTable extends Migration
     {
         Schema::create('drivers', function (Blueprint $table) {
             $table->id();
-            $table->text('phone')->nullable();
-            $table->text('profile_pic')->nullable();
             $table->text('id_pic');
             $table->text('license_pic');
             $table->text('insurance_pic');
             $table->unsignedBigInteger('user_id');
+            $table->softDeletes();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

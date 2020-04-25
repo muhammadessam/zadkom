@@ -18,10 +18,10 @@ class CreateStoresTable extends Migration
             $table->text('name');
             $table->double('lat')->nullable();
             $table->double('long')->nullable();
-            $table->text('phone')->nullable();
             $table->boolean('is_24');
             $table->boolean('is_active')->default(true);
             $table->unsignedBigInteger('user_id');
+            $table->softDeletes();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
