@@ -21,6 +21,11 @@ class DriverController extends Controller
         return view('Admin.Drivers.create');
     }
 
+    public function show(Driver $driver)
+    {
+        return view('Admin.Drivers.show', compact('driver'));
+    }
+
     public function store(Request $request)
     {
         $data = $request->validate([

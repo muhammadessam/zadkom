@@ -48,7 +48,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('user.index')}}" class="nav-link {{Request::segment(2)=='store' ? 'active' : ''}}">
+                                <a href="{{route('store.index')}}" class="nav-link {{Request::segment(2)=='store' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>
                                         المتاجر
