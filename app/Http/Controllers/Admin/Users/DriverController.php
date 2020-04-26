@@ -57,12 +57,12 @@ class DriverController extends Controller
         ]);
 
         if ($data['profile_pic'] != null && $data['profile_pic'] != '') {
-            $user->update(['profile_pic' => $this->storeFile('profile_pic', $user->id)]);
+            $user->update(['profile_pic' => $this->storeFile('Profiles', 'profile_pic', $user->id)]);
         }
         $user->driver()->create([
-            'id_pic' => $this->storeFile('id_pic', $user->id),
-            'license_pic' => $this->storeFile('license_pic', $user->id),
-            'insurance_pic' => $this->storeFile('insurance_pic', $user->id),
+            'id_pic' => $this->storeFile('Profiles', 'id_pic', $user->id),
+            'license_pic' => $this->storeFile('Profiles', 'license_pic', $user->id),
+            'insurance_pic' => $this->storeFile('Profiles', 'insurance_pic', $user->id),
         ]);
 
         alert()->success('نم', 'تم اضافة سائق جديد');
@@ -93,19 +93,19 @@ class DriverController extends Controller
         ]);
 
         if ($request['profile_pic'] != null && $request['profile_pic'] != '') {
-            $driver->user()->update(['profile_pic' => $this->storeFile('profile_pic', $driver->user->id)]);
+            $driver->user()->update(['profile_pic' => $this->storeFile('Profiles', 'profile_pic', $driver->user->id)]);
         }
         if ($request['id_pic'])
             $driver->update([
-                'id_pic' => $this->storeFile('id_pic', $driver->user->id),
+                'id_pic' => $this->storeFile('Profiles', 'id_pic', $driver->user->id),
             ]);
         if ($request['license_pic'])
             $driver->update([
-                'license_pic' => $this->storeFile('license_pic', $driver->user->id),
+                'license_pic' => $this->storeFile('Profiles', 'license_pic', $driver->user->id),
             ]);
         if ($request['insurance_pic'])
             $driver->update([
-                'insurance_pic' => $this->storeFile('insurance_pic', $driver->user->id),
+                'insurance_pic' => $this->storeFile('Profiles', 'insurance_pic', $driver->user->id),
             ]);
         alert()->success('تم ', 'تم التعديل بنجاح');
         return redirect()->route('driver.index');

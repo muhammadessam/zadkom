@@ -27,7 +27,7 @@
                     </li>
 
                     <li class="nav-item has-treeview {{request()->segment(2)=='users' ? 'menu-open' : ''}}">
-                        <a href="#" class="nav-link active">
+                        <a href="#" class="nav-link {{request()->segment(2)=='users' ? 'active' : ''}} ">
                             <i class="nav-icon fa fa-user-circle"></i>
                             <p>
                                 الاعضاء
@@ -80,16 +80,16 @@
                     </li>
 
                     <li class="nav-item has-treeview {{request()->segment(2)=='products' ? 'menu-open' : ''}}">
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-link {{request()->segment(2)=='products' ? 'active' : ''}} ">
                             <i class="nav-icon fa fa-pie-chart"></i>
                             <p>
                                 المنتجات
                                 <i class="right fa fa-angle-left"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview {{request()->segment(3)=='product' ? 'menu-open' : ''}}">
+                        <ul class="nav nav-treeview ">
                             <li class="nav-item">
-                                <a href="{{route('product.index')}}" class="nav-link">
+                                <a href="{{route('product.index')}}" class="nav-link {{request()->segment(3)=='product' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>الكل</p>
                                 </a>

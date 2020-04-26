@@ -58,7 +58,7 @@ class StoreController extends Controller
             'type' => 'store',
         ]);
         if ($data['profile_pic'] != null && $data['profile_pic'] != '') {
-            $user->update(['profile_pic' => $this->storeFile('profile_pic', $user->id)]);
+            $user->update(['profile_pic' => $this->storeFile('Profiles', 'profile_pic', $user->id)]);
         }
         $user->store()->create([
             'name' => $data['store_name'],
@@ -105,7 +105,7 @@ class StoreController extends Controller
             'phone' => $data['phone'],
         ]);
         if ($request['profile_pic'] != null && $request['profile_pic'] != '') {
-            $store->user()->update(['profile_pic' => $this->storeFile('profile_pic', $store->user->id)]);
+            $store->user()->update(['profile_pic' => $this->storeFile('Profiles', 'profile_pic', $store->user->id)]);
         }
         $store->update([
             'name' => $data['store_name'],

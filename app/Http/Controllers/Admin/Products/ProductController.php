@@ -15,7 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-
+        $products = Product::all();
+        return view('Admin.products.index', compact('products'));
     }
 
     /**
@@ -25,7 +26,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admin.products.create');
     }
 
     /**
@@ -36,7 +37,27 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'store_id' => 'required',
+            'pic' => 'required'
+        ], [], [
+            'name' => 'اسم المتج',
+            'description' => 'الوصف',
+            'price' => 'السعر',
+            'store_id' => 'المتجر',
+            'pic' => 'صورة المنتج'
+        ]);
+
+        $product = Product::create($request->all());
+        $product->update([
+            'pic' => $this->storeFile('Products', 'pic', $request->store_id)
+        ]);
+
+        alert()->success('تم ', 'تم اضافة المنتج');
+        return redirect()->route('product.index');
     }
 
     /**
@@ -58,7 +79,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('Admin.products.edit', compact('product'));
     }
 
     /**
@@ -70,7 +91,19 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'store_id' => 'required',
+        ], [], [
+            'name' => 'اسم المتج',
+            'description' => 'الوصف',
+            'price' => 'السعر',
+            'store_id' => 'المتجر',
+        ]);
+
+
     }
 
     /**
