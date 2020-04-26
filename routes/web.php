@@ -37,3 +37,5 @@ Route::get('/store',function()
 {
     return view('site.store');
 })->name('store');
+
+Route::resource('order','OrderController');
