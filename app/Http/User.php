@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
-use App\Models\Driver;
-use App\Models\Store;
+use App\Http\Models\Driver;
+use App\Http\Models\Store;
 
 class User extends Authenticatable
 {

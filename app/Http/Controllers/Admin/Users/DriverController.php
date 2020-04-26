@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin\Users;
 
-use App\Models\Driver;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Models\Driver;
 
 class DriverController extends Controller
 {

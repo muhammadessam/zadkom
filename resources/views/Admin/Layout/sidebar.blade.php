@@ -25,7 +25,8 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item has-treeview menu-open">
+
+                    <li class="nav-item has-treeview {{request()->segment(2)=='users' ? 'menu-open' : ''}}">
                         <a href="#" class="nav-link active">
                             <i class="nav-icon fa fa-user-circle"></i>
                             <p>
@@ -36,19 +37,21 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{{route('user.index')}}"
-                                   class="nav-link {{Request::segment(2)=='user' ? 'active' : ''}}">
+                                   class="nav-link {{Request::segment(3)=='user' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>الكل</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('driver.index')}}" class="nav-link {{Request::segment(2)=='driver' ? 'active' : ''}}">
+                                <a href="{{route('driver.index')}}"
+                                   class="nav-link {{Request::segment(3)=='driver' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>السائقين</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('store.index')}}" class="nav-link {{Request::segment(2)=='store' ? 'active' : ''}}">
+                                <a href="{{route('store.index')}}"
+                                   class="nav-link {{Request::segment(3)=='store' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>
                                         المتاجر
@@ -56,7 +59,8 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="./index3.html" class="nav-link {{Request::segment(2)=='customer' ? 'active' : ''}}">
+                                <a href=""
+                                   class="nav-link {{Request::segment(3)=='customer' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>
                                         العملاء
@@ -64,7 +68,8 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="./index3.html" class="nav-link {{Request::segment(2)=='moderator' ? 'active' : ''}}">
+                                <a href=""
+                                   class="nav-link {{Request::segment(3)=='moderator' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>
                                         المشرفين
@@ -74,31 +79,19 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item has-treeview">
+                    <li class="nav-item has-treeview {{request()->segment(2)=='products' ? 'menu-open' : ''}}">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fa fa-pie-chart"></i>
                             <p>
-                                چارت‌ها
+                                المنتجات
                                 <i class="right fa fa-angle-left"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
+                        <ul class="nav nav-treeview {{request()->segment(3)=='product' ? 'menu-open' : ''}}">
                             <li class="nav-item">
-                                <a href="pages/charts/chartjs.html" class="nav-link">
+                                <a href="{{route('product.index')}}" class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>نمودار ChartJS</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/charts/flot.html" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>نمودار Flot</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/charts/inline.html" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>نمودار Inline</p>
+                                    <p>الكل</p>
                                 </a>
                             </li>
                         </ul>

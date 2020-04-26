@@ -17,13 +17,19 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkAdmin']], function () {
+
     Route::get('/', 'Admin\DashBoard\indexController@index')->name('dashboardHome');
 
-    Route::resource('driver', 'Admin\Users\DriverController');
+    /* the user routes */
+    Route::group(['prefix' => 'users'], function () {
+        Route::resource('driver', 'Admin\Users\DriverController');
+        Route::resource('user', 'Admin\Users\userController');
+        Route::resource('store', 'Admin\Users\StoreController');
+    });
 
-    Route::resource('user', 'Admin\Users\userController');
-
-    Route::resource('store', 'Admin\Users\StoreController');
+    Route::group(['prefix' => 'products'], function () {
+        Route::resource('product', 'Admin\Products\ProductController');
+    });
 
 
 });

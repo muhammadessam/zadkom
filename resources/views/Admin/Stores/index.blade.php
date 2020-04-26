@@ -34,10 +34,10 @@
                                 <td style="text-align: center"><span class="badge badge-primary">{{$store->lat}}</span>
                                     / <span class="badge badge-primary">{{$store->long}}</span></td>
                                 <td><span
-                                        class="badge {{$store->is_24 ? 'badge-success' : 'badge-danger'}}">{{$store->is_24 ? 'yes': 'No'}}</span>
+                                        class="badge {{$store->is_24 ? 'badge-success' : 'badge-danger'}}">{{$store->is_24 ? 'تعم': 'لا'}}</span>
                                 </td>
                                 <td><span
-                                        class="badge {{$store->is_active ? 'badge-success' : 'badge-danger'}}">{{$store->is_active ? 'yes': 'No'}}</span>
+                                        class="badge {{$store->is_active ? 'badge-success' : 'badge-danger'}}">{{$store->is_active ? 'نعم': 'لا'}}</span>
                                 </td>
                                 <td style="text-align: center">
                                     <a class="btn btn-primary" href="{{route('store.edit', $store)}}"><i
