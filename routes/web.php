@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,10 +16,21 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkAdmin']], function () {
 
-Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/', 'Admin\DashBoard\indexController@index')->name('dashboardHome');
 
-Auth::routes();
+    /* the user routes */
+    Route::group(['prefix' => 'users'], function () {
+        Route::resource('driver', 'Admin\Users\DriverController');
+        Route::resource('user', 'Admin\Users\userController');
+        Route::resource('store', 'Admin\Users\StoreController');
+    });
+
+    Route::group(['prefix' => 'products'], function () {
+        Route::resource('product', 'Admin\Products\ProductController');
+    });
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/store',function()

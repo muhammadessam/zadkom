@@ -10,4 +10,12 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public function storeFile($folderName, $requestFileName, $userId)
+    {
+        $fileName = time() . request()->file($requestFileName)->getClientOriginalName();
+        $path = request()->file($requestFileName)->move(public_path("/$folderName/") . $userId . '/', $fileName);
+        return "/$folderName/" . $userId . '/' . $fileName;
+    }
+
 }
