@@ -1,0 +1,37 @@
+.mynav{
+    background-color: orange;
+    padding:10px;
+}
+.mynav img{
+    float: right;
+    height: 50px;
+    width: fit-content;
+    padding: 5px;
+}
+.mynav ul{
+    list-style: none;
+    width: fit-content;
+    margin: 0 auto;
+    height: 50px;
+    line-height: 50px;
+}
+.mynav ul li{
+    float: right;
+    text-align: center;
+    width: 150px;
+}
+.mynav ul li:hover{
+    width: 170px;
+    background-color: #e18d00;
+}
+.mynav ul li a{
+    color: #735d0e;
+    font-size: 20px;
+    font-weight: 700;
+    display: block;
+}
+.mynav ul li a:hover{
+    text-decoration: none;
+}
+
+
