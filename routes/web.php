@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('site.home');
 });
 
 Auth::routes();
@@ -30,6 +30,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkAdmin']], func
     Route::group(['prefix' => 'products'], function () {
         Route::resource('product', 'Admin\Products\ProductController');
     });
-
-
 });
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/store',function()
+{
+    return view('site.store');
+})->name('store');
+
+Route::resource('order','OrderController');
