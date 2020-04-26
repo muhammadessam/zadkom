@@ -6,7 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Models\Driver;
+use App\Models\Driver;
 
 class DriverController extends Controller
 {

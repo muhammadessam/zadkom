@@ -56,7 +56,7 @@
                                 <div class="form-group">
                                     <label>المتجر</label>
                                     <select name="store_id" class="form-control select2" style="width: 100%;">
-                                        @foreach(\App\Http\Models\Store::all() as $store)
+                                        @foreach(\Appxz\Models\Store::all() as $store)
                                             <option
                                                 value="{{$store->id}}" {{$store->id==$product->store->id ? 'selected': ''}}>{{$store->name}}</option>
                                         @endforeach

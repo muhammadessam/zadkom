@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Models;
+namespace App\Models;
 
-use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\User;
 
-class Driver extends Model
+class Store extends Model
 {
     use SoftDeletes;
     protected $guarded = [];
@@ -16,8 +16,8 @@ class Driver extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function car()
+    public function products()
     {
-        return $this->hasOne(Car::class, 'driver_id', 'id');
+        return $this->hasMany(Product::class, 'store_id', 'id');
     }
 }
