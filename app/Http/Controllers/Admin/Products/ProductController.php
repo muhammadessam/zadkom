@@ -102,7 +102,16 @@ class ProductController extends Controller
             'price' => 'السعر',
             'store_id' => 'المتجر',
         ]);
+        $product->update($request->all());
 
+        if ($request['pic']) {
+            $product->update([
+                'pic' => $this->storeFile('Products', 'pic', $request->store_id)
+            ]);
+        }
+
+        alert()->success('تم ', 'تم التعديل المنتج');
+        return redirect()->route('product.index');
 
     }
 
@@ -114,6 +123,10 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        alert()->success('تم', 'تم الحذف بنجاح');
+        return redirect()->route('product.index');
     }
+
+
 }

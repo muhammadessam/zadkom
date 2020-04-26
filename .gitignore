@@ -5,6 +5,7 @@
 /vendor
 /.idea
 /public/Profiles
+/public/Products
 .env
 .env.backup
 .phpunit.result.cache

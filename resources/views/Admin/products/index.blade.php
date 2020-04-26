@@ -19,6 +19,7 @@
                             <td>الاسم</td>
                             <td>الوصف</td>
                             <td>السعر</td>
+                            <td>صورة المنتج</td>
                             <td>المتجر</td>
                             <td>اجراء</td>
                         </tr>
@@ -27,8 +28,9 @@
                         @foreach($products as $product)
                             <tr>
                                 <td>{{$product->name}}</td>
-                                <td>{{$product->description}}</td>
+                                <td>{{ $product->description }}</td>
                                 <td>{{$product->price}}</td>
+                                <td><img src="{{asset($product->pic)}}" alt="صورة المنتج" style="width: 50px;height: 50px;"></td>
                                 <td>{{$product->store->name}}</td>
                                 <td style="text-align: center">
                                     <a class="btn btn-primary" href="{{route('product.edit', $product)}}"><i
