@@ -107,38 +107,33 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('offer.index')}}" class="nav-link {{request()->segment(3)=='offer' ? 'active' : ''}}">
+                                <a href="{{route('offer.index')}}"
+                                   class="nav-link {{request()->segment(3)=='offer' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>الكل</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
+                    <li class="nav-item has-treeview {{request()->segment(2)=='orders' ? 'menu-open':''}}">
+                        <a href="#" class="nav-link {{request()->segment(2)=='orders' ? 'active':''}}">
                             <i class="nav-icon fa fa-edit"></i>
                             <p>
-                                فرم‌ها
+                                طلبات العملاء
                                 <i class="fa fa-angle-left right"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/forms/general.html" class="nav-link">
+                                <a href="{{route('order.index')}}" class="nav-link {{request()->segment(3)=='order' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>اجزا عمومی</p>
+                                    <p>الكل</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/forms/advanced.html" class="nav-link">
+                                <a href="{{route('order.create')}}" class="nav-link {{request()->segment(3)=='order' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>پیشرفته</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/forms/editors.html" class="nav-link">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>ویشرایشگر</p>
+                                    <p>اضافة طلب جديد</p>
                                 </a>
                             </li>
                         </ul>

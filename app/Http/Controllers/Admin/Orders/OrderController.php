@@ -17,8 +17,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = OrderResource::collection(Order::all());
-        return $orders;
+        $orders = Order::all();
+        return view('Admin.Orders.index', compact('orders'));
     }
 
     /**

@@ -36,6 +36,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkAdmin']], func
     Route::group(['prefix' => 'offers'], function () {
         Route::resource('offer', 'Admin\Offers\OfferController');
     });
+
+    /*orders*/
+    Route::group(['prefix' => 'orders'], function () {
+        Route::resource('order', 'Admin\Orders\OrderController');
+    });
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -43,4 +48,3 @@ Route::get('/store', function () {
     return view('site.store');
 })->name('store');
 
-Route::resource('order', 'OrderController');

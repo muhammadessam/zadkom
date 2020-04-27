@@ -7,9 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+    protected $table = 'orders';
+    protected $guarded = [];
+
+
     public function products()
     {
         return $this->belongsToMany(Product::class, 'orders_products', 'product_id', 'order_id');
+    }
+
+    public function store()
+    {
+        return $this->belongsTo(Store::class, 'store_id', 'id');
     }
 
     public function user()
