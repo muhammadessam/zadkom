@@ -27,15 +27,20 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkAdmin']], func
         Route::resource('store', 'Admin\Users\StoreController');
     });
 
+    /*Products*/
     Route::group(['prefix' => 'products'], function () {
         Route::resource('product', 'Admin\Products\ProductController');
+    });
+
+    /*Offers*/
+    Route::group(['prefix' => 'offers'], function () {
+        Route::resource('offer', 'Admin\Offers\OfferController');
     });
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/store',function()
-{
+Route::get('/store', function () {
     return view('site.store');
 })->name('store');
 
-Route::resource('order','OrderController');
+Route::resource('order', 'OrderController');

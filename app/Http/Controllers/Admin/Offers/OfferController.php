@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Offers;
 
-use App\Offer;
+use App\Models\Offer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +15,8 @@ class OfferController extends Controller
      */
     public function index()
     {
-        //
+        $offers = Offer::all();
+        return view('Admin.Offers.index', compact('offers'));
     }
 
     /**
@@ -25,7 +26,7 @@ class OfferController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admin.Offers.create');
     }
 
     /**
@@ -36,7 +37,19 @@ class OfferController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'price' => 'required',
+            'order_id' => 'required',
+            'driver_id' => 'required',
+        ], [], [
+            'price' => 'السعر',
+            'order_id' => 'مقدط الطلي',
+            'driver_id' => 'مقدم العرص'
+        ]);
+        $request['accepted'] = $request['accepted'] ? true : false;
+        $offer = Offer::create($request->all());
+        alert()->success('تم ', 'تم اضاة العرض بنجاح');
+        return redirect()->route('offer.index');
     }
 
     /**
@@ -58,7 +71,7 @@ class OfferController extends Controller
      */
     public function edit(Offer $offer)
     {
-        //
+        return view('Admin.Offers.edit', compact('offer'));
     }
 
     /**
@@ -70,7 +83,19 @@ class OfferController extends Controller
      */
     public function update(Request $request, Offer $offer)
     {
-        //
+        $request->validate([
+            'price' => 'required',
+            'order_id' => 'required',
+            'driver_id' => 'required',
+        ], [], [
+            'price' => 'السعر',
+            'order_id' => 'مقدط الطلي',
+            'driver_id' => 'مقدم العرص'
+        ]);
+        $request['accepted'] = $request['accepted'] ? true : false;
+        $offer->update($request->all());
+        alert()->success('تم ', 'تم التعديل العرض بنجاح');
+        return redirect()->route('offer.index');
     }
 
     /**
@@ -81,6 +106,8 @@ class OfferController extends Controller
      */
     public function destroy(Offer $offer)
     {
-        //
+        $offer->delete();
+        alert()->success('تم', 'تم الحذف بنجاح');
+        return redirect()->route('offer.index');
     }
 }
