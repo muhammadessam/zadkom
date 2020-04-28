@@ -17,9 +17,9 @@ class CreateOffersTable extends Migration
             $table->id();
             $table->double('price');
             $table->boolean('accepted');
-            $table->unsignedBigInteger('order_id');
-            $table->unsignedBigInteger('driver_id');
+            $table->bigInteger('order_id')->unsigned();
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+            $table->bigInteger('driver_id')->unsigned();
             $table->foreign('driver_id')->references('id')->on('drivers')->onDelete('cascade');
             $table->timestamps();
         });

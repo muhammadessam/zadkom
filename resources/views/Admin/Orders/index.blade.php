@@ -21,17 +21,35 @@
                             <td>الحالة</td>
                             <td>المتجر</td>
                             <td>السائق</td>
+                            <td>عدد العناصر</td>
+                            <td>اجمالي الفاتورة</td>
                             <td>اجراء</td>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($orders as $order)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{$order->id}}</td>
+                                <td>{{$order->user->name}}</td>
+                                <td>
+                                    @if($order->status == "pending")
+                                        معلق
+                                    @elseif($order->status == "in_shiping")
+                                        تحت الطلب
+                                    @else
+                                        لم تعرف بعد
+                                    @endif
+                                </td>
+                                <td>{{$order->store->user->name}}</td>
+                                <td>{{$order->driver->user->name}}</td>
+                                <td>{{$order->products->count()}}</td>
+                                <td>
+                                    <?php $s = 0 ?>
+                                    @foreach($order->products as $item)
+                                        <?php $s = $s + $item->price ?>
+                                    @endforeach
+                                    <?php echo $s; ?>
+                                </td>
                                 <td style="text-align: center">
                                     <a class="btn btn-primary" href="{{route('order.edit', $order)}}"><i
                                             class="fa fa-edit"></i></a>
