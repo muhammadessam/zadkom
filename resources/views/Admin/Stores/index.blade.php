@@ -26,7 +26,7 @@
                         <tbody>
                         @foreach($stores as $store)
                             <tr style="text-align: center">
-                                <td>{{$store->user->name}}</td>
+                                <td><a class="btn btn-outline-dark" href="{{route('store.show', $store)}}">{{$store->name}}</a></td>
                                 <td>{{$store->user->phone}}</td>
                                 <td><img style="width: 50px; height: 50px" src="{{asset($store->user->profile_pic)}}"
                                          alt="لم يضع صورة شخصية"></td>

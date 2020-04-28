@@ -74,7 +74,7 @@ class StoreController extends Controller
 
     public function show(Store $store)
     {
-
+        return view('Admin.Stores.show', compact('store'));
     }
 
     public function update(Request $request, Store $store)
