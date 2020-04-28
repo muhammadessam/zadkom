@@ -24,7 +24,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkAdmin']], func
     Route::group(['prefix' => 'users'], function () {
         Route::resource('driver', 'Admin\Users\DriverController');
         Route::resource('store', 'Admin\Users\StoreController');
-        Route::resource('customer', 'Admin\Users\CustomerController');
+        Route::resource('customer', 'Admin\Users\CustomerController', ['parameters'=>[
+            'customer'=>'user'
+        ]]);
     });
 
     /*Products*/

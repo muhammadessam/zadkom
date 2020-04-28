@@ -4,8 +4,9 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <h3 class="card-title">كل المستخدمين</h3>
+                    <a class="btn btn-primary" href="{{route('customer.create')}}">اضافة</a>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -15,7 +16,6 @@
                             <th>لاسم</th>
                             <th>الايميل</th>
                             <th>الصورة</th>
-                            <th>النوع</th>
                             <th>اجراء</th>
                         </tr>
                         </thead>
@@ -24,12 +24,17 @@
                             <tr>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
-                                <td><img style="width: 20px; height: 20px" src="{{asset($user->type)}}"
+                                <td><img style="width: 50px; height: 50px" src="{{asset($user->profile_pic)}}"
                                          alt="لم يضع صورة شخصية"></td>
-                                <td style="text-align: center"><span class="badge badge-primary">{{$user->type}}</span></td>
                                 <td style="text-align: center">
                                     <a class="btn btn-primary" href="{{route('customer.edit', $user)}}"><i class="fa fa-edit"></i></a>
-                                </td>
+                                    <form style="display: inline-block" action="{{route('customer.destroy', $user)}}"
+                                          method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger" onclick="return myFunction();"><i
+                                                class="fa fa-trash"></i></button>
+                                    </form>                                </td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -38,7 +43,6 @@
                             <th>لاسم</th>
                             <th>الايميل</th>
                             <th>الصورة</th>
-                            <th>النوع</th>
                             <th>اجراء</th>
                         </tr>
                         </tfoot>
@@ -68,5 +72,11 @@
                 "info": false,
             });
         });
+
+        function myFunction() {
+            if (!confirm("هل تريد تاكيد الخذف"))
+                event.preventDefault();
+        }
     </script>
+
 @endsection

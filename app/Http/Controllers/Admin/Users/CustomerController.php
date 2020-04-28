@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Users;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -26,7 +27,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-
+        return view('Admin.Customers.create');
     }
 
     /**
@@ -37,7 +38,35 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'profile_pic' => '',
+            'phone' => 'required|numeric',
+
+        ], [], [
+            'name' => 'الاسم ',
+            'email' => 'البريد',
+            'password' => 'كلمة المرور',
+            'profile_pic' => 'الصورة الشخصية',
+            'phone' => 'الجوال',
+        ]);
+
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'phone' => $data['phone'],
+            'type' => 'normal',
+        ]);
+
+        if ($data['profile_pic'] != null && $data['profile_pic'] != '') {
+            $user->update(['profile_pic' => $this->storeFile('Profiles', 'profile_pic', $user->id)]);
+        }
+
+        alert()->success('تم', 'تم اضافة عميل جديد');
+        return redirect()->route('customer.index');
     }
 
     /**
@@ -59,7 +88,7 @@ class CustomerController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('Admin.Customers.edit', compact('user'));
     }
 
     /**
@@ -71,7 +100,30 @@ class CustomerController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+
+        $data = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+
+        ], [], [
+            'name' => 'الاسم ',
+            'email' => 'البريد',
+        ]);
+
+        $user->update([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => $request->password != null && $request->password != '' ? Hash::make($request->password) : $user->password,
+            'phone' => $request->phone,
+            'type' => 'normal',
+        ]);
+
+        if ($request['profile_pic'] != null && $request['profile_pic'] != '') {
+            $user->update(['profile_pic' => $this->storeFile('Profiles', 'profile_pic', $user->id)]);
+        }
+
+        alert()->success('تم', 'تم اضافة عميل جديد');
+        return redirect()->route('customer.index');
     }
 
     /**
@@ -82,6 +134,8 @@ class CustomerController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        alert()->success('تم ', 'تم الحذف بنجاح');
+        return redirect()->back();
     }
 }
