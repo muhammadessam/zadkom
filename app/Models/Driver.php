@@ -25,4 +25,9 @@ class Driver extends Model
     {
         return $this->hasMany(Offer::class, 'driver_id', 'id');
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'driver_id', 'id');
+    }
 }

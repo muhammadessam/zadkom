@@ -4,9 +4,6 @@
 
         <!-- Profile Image -->
         <div class="card card-primary card-outline">
-            <div>
-                <a class="m-3 btn btn-primary" href="{{route('driver.edit', $driver)}}">تعديل</a>
-            </div>
             <div class="card-body box-profile">
                 <div class="text-center">
                     <img class="profile-user-img img-fluid img-circle" src="{{asset($driver->user->profile_pic)}}"
@@ -27,6 +24,7 @@
                         <p>{{$driver->user->phone}}</p>
                     </li>
                 </ul>
+                <a class="btn btn-block btn-primary" href="{{route('driver.edit', $driver)}}">تعديل</a>
             </div>
             <!-- /.card-body -->
         </div>
@@ -57,5 +55,54 @@
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
+
+
     </div>
+    <div class="row ">
+        <div class="col-10 card offset-1">
+            <div class="card-header d-flex justify-content-lg-between">
+                <h3 class="card-title">كل العروض المقدمة من السائق</h3>
+                <div>
+                    <a class="btn btn-primary" href="{{route('product.create')}}">اضافة عرض</a>
+                </div>
+            </div>
+            <div class="card-body card-primary">
+                <table id="products" class="table table-bordered table-striped text-center">
+                    <thead>
+                    <tr>
+                        <td>العرض</td>
+                        <td>الحالة</td>
+                        <td>مقدم الطلب</td>
+                        <td>السائق</td>
+
+                        <td>اجراء</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($driver->offers as $offer)
+                        <tr>
+                            <td>{{$offer->price}}</td>
+                            <td><span class="badge {{$offer->accepted ? 'badge-success' : 'badge-danger'}}">{{ $offer->accepted ? 'مقبول' : 'مرفوض' }}</span></td>
+                            <td>{{$offer->order->user->name}}</td>
+                            <td>{{$offer->driver->user->name}}</td>
+                            <td style="text-align: center">
+                                <a class="btn btn-primary" href="{{route('offer.edit', $offer)}}"><i
+                                        class="fa fa-edit"></i></a>
+                                <form style="display: inline-block" action="{{route('offer.destroy', $offer)}}"
+                                      method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger" onclick="return myFunction();"><i
+                                            class="fa fa-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
 @endsection

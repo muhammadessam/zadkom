@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('Admin.Users.index', compact('users'));
+        $customers = User::where('type', 'normal')->get();
+        return view('Admin.Customers.index', compact('customers'));
     }
 
     /**

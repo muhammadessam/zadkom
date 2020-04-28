@@ -35,13 +35,7 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('user.index')}}"
-                                   class="nav-link {{Request::segment(3)=='user' ? 'active' : ''}}">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>الكل</p>
-                                </a>
-                            </li>
+
                             <li class="nav-item">
                                 <a href="{{route('driver.index')}}"
                                    class="nav-link {{Request::segment(3)=='driver' ? 'active' : ''}}">
@@ -59,7 +53,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href=""
+                                <a href="{{route('customer.index')}}"
                                    class="nav-link {{Request::segment(3)=='customer' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>
@@ -125,13 +119,15 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('order.index')}}" class="nav-link {{request()->segment(3)=='order' ? 'active' : ''}}">
+                                <a href="{{route('order.index')}}"
+                                   class="nav-link {{request()->segment(3)=='order' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>الكل</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('order.create')}}" class="nav-link {{request()->segment(3)=='order' ? 'active' : ''}}">
+                                <a href="{{route('order.create')}}"
+                                   class="nav-link {{request()->segment(3)=='order' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>اضافة طلب جديد</p>
                                 </a>

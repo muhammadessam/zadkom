@@ -20,7 +20,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($users as $user)
+                        @foreach($customers as $user)
                             <tr>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
@@ -28,7 +28,7 @@
                                          alt="لم يضع صورة شخصية"></td>
                                 <td style="text-align: center"><span class="badge badge-primary">{{$user->type}}</span></td>
                                 <td style="text-align: center">
-                                    <a class="btn btn-primary" href="{{route('user.edit', $user)}}"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-primary" href="{{route('customer.edit', $user)}}"><i class="fa fa-edit"></i></a>
                                 </td>
                             </tr>
                         @endforeach
