@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Cars;
 
 use App\Models\Car;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CarController extends Controller
 {
@@ -14,7 +15,8 @@ class CarController extends Controller
      */
     public function index()
     {
-        //
+        $cars = Car::all();
+        return view('Admin.Cars.index', compact('cars'));
     }
 
     /**
@@ -24,7 +26,7 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admin.Cars.create');
     }
 
     /**
@@ -35,7 +37,33 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'type' => 'required',
+            'model' => 'required',
+            'manufacture_date' => 'required|numeric',
+            'car_id_pic' => 'required',
+            'license_pic' => 'required',
+            'driver_id' => 'required|numeric'
+        ], [], [
+            'type' => 'النوع',
+            'model' => 'الموديل',
+            'manufacture_date' => 'تاريخ التصنيع',
+            'car_id_pic' => 'صورة هوية السيارة',
+            'license_pic' => 'صورة رخصة السيارة',
+            'driver_id' => 'السائق'
+        ]);
+        $car = Car::create([
+            'type' => $request['type'],
+            'model' => $request['model'],
+            'manufacture_date' => $request['manufacture_date'],
+            'driver_id' => $request['driver_id'],
+            'car_id_pic' => $this->storeFile('Cars', 'car_id_pic', $request['driver_id']),
+            'license_pic' => $this->storeFile('Cars', 'license_pic', $request['driver_id'])
+        ]);
+
+        alert()->success('تم', 'تم الاضافة بنجاح');
+        return redirect()->route('car.index');
     }
 
     /**
@@ -46,7 +74,7 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
-        //
+        return view('Admin.Cars.show', compact('car'));
     }
 
     /**
@@ -57,7 +85,7 @@ class CarController extends Controller
      */
     public function edit(Car $car)
     {
-        //
+        return view('Admin.Cars.edit', compact('car'));
     }
 
     /**
@@ -69,7 +97,35 @@ class CarController extends Controller
      */
     public function update(Request $request, Car $car)
     {
-        //
+        $request->validate([
+            'type' => 'required',
+            'model' => 'required',
+            'manufacture_date' => 'required|numeric',
+            'driver_id' => 'required|numeric'
+        ], [], [
+            'type' => 'النوع',
+            'model' => 'الموديل',
+            'manufacture_date' => 'تاريخ التصنيع',
+            'driver_id' => 'السائق'
+        ]);
+        $car->update([
+            'type' => $request['type'],
+            'model' => $request['model'],
+            'manufacture_date' => $request['manufacture_date'],
+            'driver_id' => $request['driver_id'],
+        ]);
+        if ($request['car_id_pic'] != null) {
+            $car->update([
+                'car_id_pic' => $this->storeFile('Cars', 'car_id_pic', $request['driver_id']),
+            ]);
+        }
+        if ($request['license_pic'] != null) {
+            $car->update([
+                'license_pic' => $this->storeFile('Cars', 'license_pic', $request['driver_id'])
+            ]);
+        }
+        alert()->success('تم', 'تم التعديل بنجاح');
+        return redirect()->route('car.index');
     }
 
     /**
@@ -80,6 +136,8 @@ class CarController extends Controller
      */
     public function destroy(Car $car)
     {
-        //
+        $car->delete();
+        alert()->success('تم', 'تم الحذف بنجاح');
+        return back();
     }
 }
