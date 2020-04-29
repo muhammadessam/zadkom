@@ -6,6 +6,7 @@
 /.idea
 /public/Profiles
 /public/Products
+/public/Cars
 .env
 .env.backup
 .phpunit.result.cache
