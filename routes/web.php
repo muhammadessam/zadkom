@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('site.home');
-});
+Route::get('/','Site\Home\IndexController@Home');
 
 Auth::routes();
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkAdmin']], function () {
@@ -49,4 +47,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/store', function () {
     return view('site.store');
 })->name('store');
+Route::resource('profile','Site\User\ProfileController');
 

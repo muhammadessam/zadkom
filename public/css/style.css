@@ -18,10 +18,9 @@
 .mynav ul li{
     float: right;
     text-align: center;
-    width: 150px;
+    width: 250px;
 }
 .mynav ul li:hover{
-    width: 170px;
     background-color: #e18d00;
 }
 .mynav ul li a{

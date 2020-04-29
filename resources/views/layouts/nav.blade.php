@@ -11,7 +11,7 @@
                         {{auth()->user()->name}}   مرحباً
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">حسابي</a>
+                        <a class="dropdown-item" href="{{route('profile.index')}}">حسابي</a>
                         <a class="dropdown-item" href="#">طلباتي</a>
                         <a class="dropdown-item" href="#">الاشعارات</a>
                         <a class="dropdown-item" href="{{route('logout')}}">تسجيل الخروج</a>

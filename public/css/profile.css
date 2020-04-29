@@ -1,0 +1,95 @@
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+}
+.profile-header{
+    background-repeat: no-repeat;
+    background-position:center;
+}
+.profile-header img{
+    width: 10%;
+    margin: 1% 45%;
+    border: 2px solid #3d3d3d;
+    border-radius: 50%;
+}
+.profile-header h3{
+    width: 100%;
+    text-align: center;
+    color: white;
+}
+.profile-body{
+    height: 60%;
+}
+.profile-menu{
+    background-color: orange;
+    padding: 0;
+}
+.profile-menu li{
+    margin-top: 5px;
+    background-color: #ab6610;
+}
+.profile-menu a{
+    color: white;
+    font-size: 1.2rem;
+    font-family: adobe-arabic;
+    font-weight: 600;
+    letter-spacing: 1.1px;
+    display: block;
+    text-align: center;
+}
+.profile-menu a:hover{
+    background-color: white;
+    color:#ab6610 ;
+    border: solid 2px #ab6610;
+}
+.profile-info{
+    padding: 30px;
+}
+.basic-info{
+    text-align: center;
+    padding: 30px;
+}
+.basic-info h4{
+    text-align: center;
+    background: #ab6610;
+    /* border-radius: 10px; */
+    color: white;
+    border: orange solid;
+    font-weight: 600;
+    letter-spacing: 1.1px;
+}
+.store-info , .driver-info{
+    padding: 30px;
+    text-align: center;
+}
+.store-info h3 , .driver-info h3{
+    width: 100%;
+    background: #ab6610;
+    padding: 10px;
+    /* border-radius: 10px; */
+    color: white;
+    border: orange solid;
+    font-weight: 600;
+    letter-spacing: 1.1px;
+}
+.profile-edit{
+    padding: 40px;
+    text-align: right;
+}
+.profile-edit input {
+    text-align: right;
+}
+.orders-table{
+    direction: rtl;
+    font-family: adobe-arabic;
+}
+.profile-info h4{
+    width: 100%;
+    text-align: right;
+}
+.profile-info h5{
+    width: 100%;
+}
+
