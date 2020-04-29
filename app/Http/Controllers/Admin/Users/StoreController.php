@@ -50,7 +50,7 @@ class StoreController extends Controller
             'is_24' => 'فعال 24 ساعة',
             'is_active' => 'فعال',
         ]);
-        $user = \App\User::create([
+        $user = \App\Admin::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -83,7 +83,7 @@ class StoreController extends Controller
             'name' => 'required',
             'email' => 'required',
             'profile_pic' => '',
-            'phone' => 'required',
+            'phone' => '',
             'store_name' => 'required',
             'lat' => 'required',
             'long' => 'required',

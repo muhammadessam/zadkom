@@ -13,6 +13,6 @@ class Product extends Model
         return $this->belongsTo(Store::class, 'store_id', 'id');
     }
     public function orders(){
-        return $this->belongsToMany('App\Models\Order','orders_products','order_id','product_id');
+        return $this->belongsToMany(Order::class,'orders_products','order_id','product_id');
     }
 }

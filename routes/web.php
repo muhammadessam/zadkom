@@ -16,7 +16,9 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkAdmin']], function () {
+
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function () {
 
     Route::get('/', 'Admin\DashBoard\IndexController@index')->name('dashboardHome');
 
@@ -24,8 +26,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkAdmin']], func
     Route::group(['prefix' => 'users'], function () {
         Route::resource('driver', 'Admin\Users\DriverController');
         Route::resource('store', 'Admin\Users\StoreController');
-        Route::resource('customer', 'Admin\Users\CustomerController', ['parameters'=>[
-            'customer'=>'user'
+        Route::resource('customer', 'Admin\Users\CustomerController', ['parameters' => [
+            'customer' => 'user'
         ]]);
     });
 
@@ -43,6 +45,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'checkAdmin']], func
     Route::group(['prefix' => 'orders'], function () {
         Route::resource('order', 'Admin\Orders\OrderController');
     });
+
+    Route::post('/adminLogout', 'Auth\AdminLoginController@adminLogout')->name('AdminLogout');
+});
+
+Route::middleware(['guest:admin'])->group(function () {
+    Route::get('/admin/login', 'Auth\AdminLoginController@showAdminLoginForm')->name('admin.form');
+    Route::post('/admin/login', 'Auth\AdminLoginController@adminLogin')->name('admin.login');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
