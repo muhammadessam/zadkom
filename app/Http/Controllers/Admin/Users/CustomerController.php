@@ -75,27 +75,16 @@ class CustomerController extends Controller
      * @param \App\Admin $user
      * @return \Illuminate\Http\Response
      */
-    public function show(Admin $user)
+    public function show(User $user)
     {
         //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Admin $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Admin $user)
-    {
-        return view('Admin.Customers.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Admin $user
+     * @param \App\User $user
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Admin $user)
@@ -124,6 +113,17 @@ class CustomerController extends Controller
 
         alert()->success('تم', 'تم اضافة عميل جديد');
         return redirect()->route('customer.index');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param \App\User $user
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(User $user)
+    {
+        return view('Admin.Customers.edit', compact('user'));
     }
 
     /**
