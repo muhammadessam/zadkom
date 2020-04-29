@@ -117,7 +117,7 @@
                     class="fa fa-th-large"></i></a>
         </li>
         <li class="nav-item">
-            <form action="{{route('logout')}}" method="post">
+            <form action="{{route('AdminLogout')}}" method="post">
                 @csrf
                 <button title="Logout" class="btn nav-link" type="submit"><i
                         class="fa fa-user"></i></button>

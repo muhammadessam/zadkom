@@ -146,7 +146,7 @@
                                     </label>
                                 </div>
 
-                                <button class="btn btn-primary" type="submit">اضافة</button>
+                                <button class="btn btn-primary" type="submit">تعديل</button>
                             </form>
                         </div>
                     </div>
