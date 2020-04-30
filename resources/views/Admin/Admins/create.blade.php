@@ -4,22 +4,20 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-lg-between">
-                    <h3 class="card-title">تعديل عميل</h3>
+                    <h3 class="card-title">اضافة مشرف</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
 
-                            <form action="{{route('customer.update', $user)}}" method="post"
-                                  enctype="multipart/form-data">
+                            <form action="{{route('admins.store')}}" method="post" enctype="multipart/form-data">
                                 @csrf
-                                @method('patch')
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">الاسم</label>
                                     <input type="text" name="name"
                                            class="form-control @error('name') is-invalid @enderror" id="name"
-                                           value="{{$user->name}}">
+                                           placeholder="الاسم " value="{{old('name')}}">
                                     @error('name')
                                     <div style="margin-top: 2px" class="alert alert-danger">
                                         {{$message}}
@@ -29,7 +27,7 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">الايميل</label>
-                                    <input type="email" required name="email" value="{{$user->email}}"
+                                    <input type="email" required name="email" value="{{old('email')}}"
                                            class="form-control @error('email') is-invalid @enderror" id="name"
                                            placeholder="الايميل ">
                                     @error('email')
@@ -40,7 +38,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">كلمة السر</label>
-                                    <input type="password" name="password"
+                                    <input type="password" required name="password"
                                            class="form-control @error('password') is-invalid @enderror" id="password"
                                            placeholder="تاكيد كلمة السر ">
                                     @error('password')
@@ -51,7 +49,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">تاكيد كلمة السر</label>
-                                    <input type="password" name="password_confirmation"
+                                    <input type="password" required name="password_confirmation"
                                            class="form-control @error('password_confirmation') is-invalid @enderror"
                                            id="password"
                                            placeholder="تاكيد كلمة السر ">
@@ -62,9 +60,9 @@
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file"
-                                                   class="custom-file-input  @error('profile_pic') is-invalid @enderror"
+                                                   class="custom-file-input @error('profile_pic') is-invalid @enderror"
                                                    name="profile_pic"
-                                                   id="exampleInputFile">
+                                                   id="exampleInputFile" value="{{old('profile_pic')}}">
 
                                             <label class="custom-file-label" for="exampleInputFile">الصورة
                                                 الشخصية</label>
@@ -82,7 +80,7 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">الهاتف</label>
-                                    <input type="tel" name="phone" value="{{$user->phone}}"
+                                    <input type="text" name="phone" value="{{old('phone')}}"
                                            class="form-control  @error('phone') is-invalid @enderror" id="phone"
                                            placeholder="الجوال ">
                                     @error('phone')
@@ -92,14 +90,8 @@
                                     @enderror
                                 </div>
 
-                                <div class="form-group">
-                                    <label>
-                                        <input type="checkbox" class="minimal" name="is_active" {{$user->is_active ? 'checked' : ''}}>
-                                        فعال
-                                    </label>
-                                </div>
 
-                                <button class="btn btn-primary" type="submit">موافق</button>
+                                <button class="btn btn-primary" type="submit">اضافة</button>
                             </form>
                         </div>
                     </div>
@@ -110,9 +102,6 @@
         </div>
         <!-- /.col -->
     </div>
-
-
-
 @endsection
 
 
@@ -130,10 +119,5 @@
                 "info": false,
             });
         });
-        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-            checkboxClass: 'icheckbox_minimal-blue',
-            radioClass: 'iradio_minimal-blue'
-        });
-
     </script>
 @endsection

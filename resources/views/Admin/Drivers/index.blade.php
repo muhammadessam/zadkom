@@ -23,8 +23,8 @@
                         <thead>
                         <tr>
                             <th>لاسم</th>
-                            <th>مفعل</th>
-                            <th>متاح</th>
+                            <th>حالة التفعيل</th>
+                            <th>حالة التوصيل</th>
                             <th>الطلبات</th>
                             <th>الجوال</th>
                             <th>الصورة</th>
@@ -35,21 +35,21 @@
                         <tbody>
                         @foreach($drivers as $driver)
                             <tr>
-                                <td><a href="{{route('driver.show', $driver)}}">{{$driver->user->name}}</a></td>
+                                <td><a class="btn btn-outline-dark" href="{{route('driver.show', $driver)}}">{{$driver->user->name}}</a></td>
                                 <td>
                                     @if($driver->is_active)
-                                        <label class="btn btn-success btn-sm">نعم</label>
+                                        <label class="btn btn-success btn-sm">مفعل</label>
                                         <a href="{{route('driver_active',$driver->id)}}" class="btn btn-warning btn-sm">تغيير</a>
                                     @else
-                                        <label class="btn btn-danger btn-sm">لا</label>
+                                        <label class="btn btn-danger btn-sm">موقوف</label>
                                         <a href="{{route('driver_active',$driver->id)}}" class="btn btn-warning btn-sm">تغيير</a>
                                     @endif
                                 </td>
                                 <td>
                                     @if($driver->status == "free")
-                                        <label class="btn btn-success btn-sm">نعم</label>
+                                        <label class="btn btn-success btn-sm">متاح</label>
                                     @else
-                                        <label class="btn btn-danger btn-sm">لا</label>
+                                        <label class="btn btn-danger btn-sm">مشغول</label>
                                     @endif
                                 </td>
                                 <td>
@@ -60,7 +60,7 @@
                                 <td>{{$driver->user->phone}}</td>
                                 <td><img style="width: 50px; height: 50px" src="{{asset($driver->user->profile_pic)}}"
                                          alt="لم يضع صورة شخصية"></td>
-                                <td style="text-align: center">{{$driver->user->type}}</td>
+                                <td style="text-align: center">{{$driver->car != null ? $driver->car->type : 'لم يسجل سيارة'}}</td>
                                 <td style="text-align: center">
                                     <a class="btn btn-primary" href="{{route('driver.edit', $driver)}}"><i
                                             class="fa fa-edit"></i></a>
