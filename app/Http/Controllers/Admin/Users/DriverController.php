@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Driver;
+use Illuminate\Support\Facades\Redirect;
 
 class DriverController extends Controller
 {
@@ -115,5 +116,16 @@ class DriverController extends Controller
         $driver->user()->delete();
         $driver->delete();
         return redirect()->route('driver.index');
+    }
+    public function driverOrders($id){
+        $driver = Driver::find($id);
+        $orders = $driver->orders;
+        return view('Admin.Drivers.orders',compact('orders'));
+    }
+    public function changeActive($id){
+        $driver = Driver::find($id);
+        $driver->is_active = ! $driver->is_active;
+        $driver->save();
+        return Redirect::back();
     }
 }

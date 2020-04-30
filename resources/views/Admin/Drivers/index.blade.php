@@ -1,5 +1,13 @@
 @extends('Admin.Layout.layout')
 @section('content')
+    <style>
+        #drivers{
+            text-align: center;
+        }
+        .modal{
+            z-index:10000;
+        }
+    </style>
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -15,6 +23,9 @@
                         <thead>
                         <tr>
                             <th>لاسم</th>
+                            <th>مفعل</th>
+                            <th>متاح</th>
+                            <th>الطلبات</th>
                             <th>الجوال</th>
                             <th>الصورة</th>
                             <th>نوع السيارة</th>
@@ -25,6 +36,27 @@
                         @foreach($drivers as $driver)
                             <tr>
                                 <td><a href="{{route('driver.show', $driver)}}">{{$driver->user->name}}</a></td>
+                                <td>
+                                    @if($driver->is_active)
+                                        <label class="btn btn-success btn-sm">نعم</label>
+                                        <a href="{{route('driver_active',$driver->id)}}" class="btn btn-warning btn-sm">تغيير</a>
+                                    @else
+                                        <label class="btn btn-danger btn-sm">لا</label>
+                                        <a href="{{route('driver_active',$driver->id)}}" class="btn btn-warning btn-sm">تغيير</a>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if($driver->status == "free")
+                                        <label class="btn btn-success btn-sm">نعم</label>
+                                    @else
+                                        <label class="btn btn-danger btn-sm">لا</label>
+                                    @endif
+                                </td>
+                                <td>
+                                    <a href="{{route('driver_orders',$driver->id)}}" type="button" class="btn btn-primary">
+                                        مشاهدة الطلبات
+                                    </a>
+                                </td>
                                 <td>{{$driver->user->phone}}</td>
                                 <td><img style="width: 50px; height: 50px" src="{{asset($driver->user->profile_pic)}}"
                                          alt="لم يضع صورة شخصية"></td>

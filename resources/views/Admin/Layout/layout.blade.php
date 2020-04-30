@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="{{asset('dist/css/bootstrap-rtl.min.css')}}">
     <!-- template rtl version -->
     <link rel="stylesheet" href="{{asset('dist/css/custom-style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/home.css')}}">
 
 </head>
 <body class="hold-transition sidebar-mini">
