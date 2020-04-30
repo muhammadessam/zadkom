@@ -92,6 +92,12 @@
                                     @enderror
                                 </div>
 
+                                <div class="form-group">
+                                    <label>
+                                        <input type="checkbox" class="minimal" name="is_active" {{$user->is_active ? 'checked' : ''}}>
+                                        فعال
+                                    </label>
+                                </div>
 
                                 <button class="btn btn-primary" type="submit">تعديل</button>
                             </form>
@@ -124,5 +130,10 @@
                 "info": false,
             });
         });
+        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue',
+            radioClass: 'iradio_minimal-blue'
+        });
+
     </script>
 @endsection

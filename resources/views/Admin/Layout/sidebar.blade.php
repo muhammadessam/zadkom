@@ -84,11 +84,12 @@
                         <ul class="nav nav-treeview ">
                             <li class="nav-item">
                                 <a href="{{route('product.index')}}"
-                                   class="nav-link {{request()->segment(3)=='product' ? 'active' : ''}}">
+                                   class="nav-link {{request()->segment(3)=='product'  ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>الكل</p>
                                 </a>
                             </li>
+
                         </ul>
                     </li>
                     <li class="nav-item has-treeview {{request()->segment('2')=='offers' ? 'menu-open':''}}">
@@ -107,6 +108,7 @@
                                     <p>الكل</p>
                                 </a>
                             </li>
+
                         </ul>
                     </li>
                     <li class="nav-item has-treeview {{request()->segment(2)=='orders' ? 'menu-open':''}}">
@@ -130,6 +132,25 @@
                                    class="nav-link {{request()->segment(3)=='order' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>اضافة طلب جديد</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item has-treeview {{request()->segment(2)=='cars' ? 'menu-open':''}}">
+                        <a href="#" class="nav-link {{request()->segment(2)=='orders' ? 'active':''}}">
+                            <i class="nav-icon fa fa-edit"></i>
+                            <p>
+                                سيارات السائقين
+                                <i class="fa fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('car.index')}}"
+                                   class="nav-link {{request()->segment(3)=='cars' ? 'active' : ''}}">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>الكل</p>
                                 </a>
                             </li>
                         </ul>

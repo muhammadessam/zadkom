@@ -66,7 +66,7 @@
                         <div class="card-header d-flex justify-content-lg-between">
                             <h3 class="card-title">كل الطلبات</h3>
                             <div>
-                                <a class="btn btn-primary" href="{{route('product.create')}}">اضافة طلب</a>
+                                <a class="btn btn-primary" href="{{route('order.create')}}">اضافة طلب</a>
                             </div>
                         </div>
                         <div class="card-body card-primary">

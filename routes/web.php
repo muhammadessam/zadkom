@@ -12,7 +12,7 @@
 */
 
 
-Route::get('/','Site\Home\IndexController@Home');
+Route::get('/', 'Site\Home\IndexController@Home');
 
 Auth::routes();
 
@@ -46,6 +46,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function () 
         Route::resource('order', 'Admin\Orders\OrderController');
     });
 
+    Route::prefix('cars')->group(function () {
+        Route::resource('car', 'Admin\Cars\CarController');
+    });
+
+
     Route::post('/adminLogout', 'Auth\AdminLoginController@adminLogout')->name('AdminLogout');
 });
 
@@ -58,5 +63,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/store', function () {
     return view('site.store');
 })->name('store');
-Route::resource('profile','Site\User\ProfileController');
+Route::resource('profile', 'Site\User\ProfileController');
 
