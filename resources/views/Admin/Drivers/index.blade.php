@@ -11,7 +11,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table id="drivers" class="table table-bordered table-striped">
+                    <table style="text-align: center" id="drivers" class="table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th>لاسم</th>

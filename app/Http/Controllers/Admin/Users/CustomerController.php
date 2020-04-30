@@ -58,6 +58,7 @@ class CustomerController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'phone' => $data['phone'],
+            'is_active' => $data['is_active'] == 'on' ? true : false,
             'type' => 'normal',
         ]);
 
@@ -72,12 +73,12 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Admin $user
+     * @param \App\User $user
      * @return \Illuminate\Http\Response
      */
     public function show(User $user)
     {
-        //
+        return  view('Admin.Customers.show', compact('user'));
     }
 
     /**
@@ -87,7 +88,7 @@ class CustomerController extends Controller
      * @param \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin $user)
+    public function update(Request $request, User $user)
     {
 
         $data = $request->validate([
@@ -104,6 +105,7 @@ class CustomerController extends Controller
             'email' => $data['email'],
             'password' => $request->password != null && $request->password != '' ? Hash::make($request->password) : $user->password,
             'phone' => $request->phone,
+            'is_active' => $request['is_active'] == 'on' ? true : false,
             'type' => 'normal',
         ]);
 
@@ -132,7 +134,7 @@ class CustomerController extends Controller
      * @param \App\Admin $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Admin $user)
+    public function destroy(User $user)
     {
         $user->delete();
         alert()->success('تم ', 'تم الحذف بنجاح');

@@ -89,7 +89,12 @@
                                     </div>
                                     @enderror
                                 </div>
-
+                                <div class="form-group">
+                                    <label>
+                                        <input type="checkbox" class="minimal" name="is_active">
+                                        فعال
+                                    </label>
+                                </div>
 
                                 <button class="btn btn-primary" type="submit">اضافة</button>
                             </form>
