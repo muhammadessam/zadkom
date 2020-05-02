@@ -4,14 +4,14 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-lg-between">
-                    <h3 class="card-title">تعديل عميل</h3>
+                    <h3 class="card-title">تعديل مشرف</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
 
-                            <form action="{{route('customer.update', $user)}}" method="post"
+                            <form action="{{route('admins.update', $admin)}}" method="post"
                                   enctype="multipart/form-data">
                                 @csrf
                                 @method('patch')
@@ -19,7 +19,7 @@
                                     <label for="exampleInputEmail1">الاسم</label>
                                     <input type="text" name="name"
                                            class="form-control @error('name') is-invalid @enderror" id="name"
-                                           value="{{$user->name}}">
+                                           value="{{$admin->name}}">
                                     @error('name')
                                     <div style="margin-top: 2px" class="alert alert-danger">
                                         {{$message}}
@@ -29,7 +29,7 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">الايميل</label>
-                                    <input type="email" required name="email" value="{{$user->email}}"
+                                    <input type="email" required name="email" value="{{$admin->email}}"
                                            class="form-control @error('email') is-invalid @enderror" id="name"
                                            placeholder="الايميل ">
                                     @error('email')
@@ -82,7 +82,7 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">الهاتف</label>
-                                    <input type="tel" name="phone" value="{{$user->phone}}"
+                                    <input type="tel" name="phone" value="{{$admin->phone}}"
                                            class="form-control  @error('phone') is-invalid @enderror" id="phone"
                                            placeholder="الجوال ">
                                     @error('phone')
@@ -92,14 +92,9 @@
                                     @enderror
                                 </div>
 
-                                <div class="form-group">
-                                    <label>
-                                        <input type="checkbox" class="minimal" name="is_active" {{$user->is_active ? 'checked' : ''}}>
-                                        فعال
-                                    </label>
-                                </div>
 
-                                <button class="btn btn-primary" type="submit">موافق</button>
+
+                                <button class="btn btn-primary" type="submit">تعديل</button>
                             </form>
                         </div>
                     </div>

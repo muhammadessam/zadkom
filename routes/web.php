@@ -29,6 +29,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function () 
         Route::resource('customer', 'Admin\Users\CustomerController', ['parameters' => [
             'customer' => 'user'
         ]]);
+        Route::resource('admins', 'Admin\Users\AdminController');
     });
 
     /*Products*/

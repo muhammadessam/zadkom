@@ -113,7 +113,7 @@ class CustomerController extends Controller
             $user->update(['profile_pic' => $this->storeFile('Profiles', 'profile_pic', $user->id)]);
         }
 
-        alert()->success('تم', 'تم اضافة عميل جديد');
+        alert()->success('تم', 'تم الحفظ بنجاح');
         return redirect()->route('customer.index');
     }
 

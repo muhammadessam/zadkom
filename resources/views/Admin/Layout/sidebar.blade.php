@@ -41,6 +41,7 @@
                                    class="nav-link {{Request::segment(3)=='driver' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>السائقين</p>
+                                    <span class="badge badge-primary">{{count(\App\Models\Driver::all())}}</span>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -50,6 +51,8 @@
                                     <p>
                                         المتاجر
                                     </p>
+                                    <span class="badge badge-info">{{count(\App\Models\Store::all())}}</span>
+
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -59,15 +62,19 @@
                                     <p>
                                         العملاء
                                     </p>
+                                    <span
+                                        class="badge badge-danger">{{count(\App\User::all()->where('type', 'normal'))}}</span>
+
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href=""
-                                   class="nav-link {{Request::segment(3)=='moderator' ? 'active' : ''}}">
+                                <a href="{{route('admins.index')}}"
+                                   class="nav-link {{Request::segment(3)=='admins' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>
                                         المشرفين
                                     </p>
+                                    <span class="badge badge-secondary">{{count(\App\Models\Admin::all())}}</span>
                                 </a>
                             </li>
                         </ul>
