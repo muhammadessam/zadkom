@@ -18,14 +18,18 @@ Auth::routes();
 
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function () {
-    Route::get('driver_orders/{id}','Admin\Users\DriverController@driverOrders')->name('driver_orders');
-    Route::get('driver_active/{id}','Admin\Users\DriverController@changeActive')->name('driver_active');
+    Route::get('driver_orders/{id}', 'Admin\Users\DriverController@driverOrders')->name('driver_orders');
+    Route::get('driver_active/{id}', 'Admin\Users\DriverController@changeActive')->name('driver_active');
     Route::get('/', 'Admin\DashBoard\IndexController@index')->name('dashboardHome');
 
     /* the user routes */
     Route::group(['prefix' => 'users'], function () {
+
+        /*drivers Route and filtering*/
         Route::resource('driver', 'Admin\Users\DriverController');
+
         Route::resource('store', 'Admin\Users\StoreController');
+
         Route::resource('customer', 'Admin\Users\CustomerController', ['parameters' => [
             'customer' => 'user'
         ]]);

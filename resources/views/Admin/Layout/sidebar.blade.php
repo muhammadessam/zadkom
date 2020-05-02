@@ -10,7 +10,6 @@
     <!-- Sidebar -->
     <div class="sidebar" style="direction: ltr">
         <div style="direction: rtl">
-
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"

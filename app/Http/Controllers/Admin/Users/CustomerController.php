@@ -14,9 +14,19 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $customers = User::where('type', 'normal')->get();
+        if ($request->has('filter')) {
+            if ($request->get('filter') == 'active') {
+                $customers = User::where('type', 'normal')->where('is_active', 1)->get();
+            } else if ($request->get('filter') == 'notActive') {
+                $customers = User::where('type', 'normal')->where('is_active', 0)->get();
+            } else {
+                $customers = User::where('type', 'normal')->get();
+            }
+        } else {
+            $customers = User::where('type', 'normal')->get();
+        }
         return view('Admin.Customers.index', compact('customers'));
     }
 
@@ -78,7 +88,7 @@ class CustomerController extends Controller
      */
     public function show(User $user)
     {
-        return  view('Admin.Customers.show', compact('user'));
+        return view('Admin.Customers.show', compact('user'));
     }
 
     /**
