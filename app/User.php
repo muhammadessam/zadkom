@@ -56,4 +56,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class, 'user_id', 'id');
     }
+    public function nots()
+    {
+        return $this->hasMany('App\Models\Not' , 'user_id' ,'id');
+    }
 }

@@ -56,7 +56,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="#"
+                        <a href="{{route('nots.create')}}"
                            class="nav-link">
                             <i class="fa fa-bell-o nav-icon"></i>
                             <p>

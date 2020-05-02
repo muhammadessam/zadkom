@@ -51,6 +51,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function () 
         Route::resource('car', 'Admin\Cars\CarController');
     });
 
+    Route::resource('nots', 'NotController');
 
     Route::post('/adminLogout', 'Auth\AdminLoginController@adminLogout')->name('AdminLogout');
 });
@@ -66,3 +67,6 @@ Route::get('/store', function () {
 })->name('store');
 Route::resource('profile', 'Site\User\ProfileController');
 
+Route::get('/nots',function(){
+    return view('site.nots');
+})->name('nots');
