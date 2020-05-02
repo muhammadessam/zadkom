@@ -62,16 +62,17 @@
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file"
-                                                   class="custom-file-input  @error('profile_pic') is-invalid @enderror"
-                                                   name="profile_pic"
-                                                   id="exampleInputFile" value="{{old('profile_pic')}}">
+                                                class="custom-file-input  @error('profile_pic') is-invalid @enderror"
+                                                name="profile_pic"
+                                                id="exampleInputFile" value="{{old('profile_pic')}}">
 
                                             <label class="custom-file-label" for="exampleInputFile">الصورة
                                                 الشخصية</label>
                                         </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" id="">ارسال صورة</span>
+                                        <div class="col-md-3">
+                                            <img src="{{asset($driver->user->profile_pic)}}" alt="لم تعيين  بعد">
                                         </div>
+                                        
                                     </div>
                                     @error('profile_pic')
                                     <div style="margin-top: 2px" class="alert alert-danger">

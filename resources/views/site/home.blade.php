@@ -1,6 +1,6 @@
 @extends('layouts.myapp')
 @section('content')
-    @if(! $is_null)
+    @if(! $is_null && auth()->check())
         <div class="alert alert-warning" role="alert" style="margin: 0;text-align: center;">
         نرجو منك اكمال البيان الخاصه بكم ..شكراً 
             <a href="{{route('profile.edit',auth()->id())}}" class="alert-link">هنا</a>

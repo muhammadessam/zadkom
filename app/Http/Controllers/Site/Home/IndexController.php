@@ -11,7 +11,10 @@ class IndexController extends Controller
     public function Home()
     {
         $stores = Store::all()->sortByDesc('id');
-        $is_null = $this->is_null_field(auth()->user());
+        if (auth()->check()) {
+            $is_null = $this->is_null_field(auth()->user());
+        }
+        $is_null = false;
         return view('site.home',["stores"=>$stores,'is_null'=>$is_null]);
     }
     public function is_null_field(User $user){
