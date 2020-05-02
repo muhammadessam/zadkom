@@ -26,8 +26,49 @@
                         </a>
                     </li>
 
-                    <li class="nav-item has-treeview {{request()->segment(2)=='users' ? 'menu-open' : ''}}">
-                        <a href="#" class="nav-link {{request()->segment(2)=='users' ? 'active' : ''}} ">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">
+                            <i class="nav-icon fa fa-home"></i>
+                            <p>
+                                زيارة الواجهة الرئيسية
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa fa-edit"></i>
+                            <p>
+                                الاعدادت
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{route('admins.index')}}"
+                           class="nav-link {{Request::segment(3)=='admins' ? 'active' : ''}}">
+                            <i class="fa fa-user-circle nav-icon"></i>
+                            <p>
+                                المشرفين
+                            </p>
+                            <span class="badge badge-secondary">{{count(\App\Models\Admin::all())}}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#"
+                           class="nav-link">
+                            <i class="fa fa-bell-o nav-icon"></i>
+                            <p>
+                                الاشعارات
+                            </p>
+                            <span class="badge badge-secondary">{{count(\App\Models\Admin::all())}}</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item has-treeview {{request()->segment(2)=='users' && request()->segment(3)!='admins'? 'menu-open' : ''}}">
+                        <a href="#"
+                           class="nav-link {{request()->segment(2)=='users' && request()->segment(3)!='admins'  ? 'active' : ''}} ">
                             <i class="nav-icon fa fa-user-circle"></i>
                             <p>
                                 الاعضاء
@@ -67,22 +108,13 @@
 
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="{{route('admins.index')}}"
-                                   class="nav-link {{Request::segment(3)=='admins' ? 'active' : ''}}">
-                                    <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>
-                                        المشرفين
-                                    </p>
-                                    <span class="badge badge-secondary">{{count(\App\Models\Admin::all())}}</span>
-                                </a>
-                            </li>
+
                         </ul>
                     </li>
 
                     <li class="nav-item has-treeview {{request()->segment(2)=='products' ? 'menu-open' : ''}}">
                         <a href="#" class="nav-link {{request()->segment(2)=='products' ? 'active' : ''}} ">
-                            <i class="nav-icon fa fa-pie-chart"></i>
+                            <i class="nav-icon fa fa-product-hunt"></i>
                             <p>
                                 المنتجات
                                 <i class="right fa fa-angle-left"></i>
@@ -99,9 +131,10 @@
 
                         </ul>
                     </li>
+
                     <li class="nav-item has-treeview {{request()->segment('2')=='offers' ? 'menu-open':''}}">
                         <a href="#" class="nav-link {{request()->segment('2')=='offers' ? 'active':''}}">
-                            <i class="nav-icon fa fa-tree"></i>
+                            <i class="nav-icon fa fa-gift"></i>
                             <p>
                                 العروض
                                 <i class="fa fa-angle-left right"></i>
@@ -118,9 +151,10 @@
 
                         </ul>
                     </li>
+
                     <li class="nav-item has-treeview {{request()->segment(2)=='orders' ? 'menu-open':''}}">
                         <a href="#" class="nav-link {{request()->segment(2)=='orders' ? 'active':''}}">
-                            <i class="nav-icon fa fa-edit"></i>
+                            <i class="nav-icon fa fa-shopping-cart"></i>
                             <p>
                                 طلبات العملاء
                                 <i class="fa fa-angle-left right"></i>
@@ -144,23 +178,66 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item has-treeview {{request()->segment(2)=='cars' ? 'menu-open':''}}">
+                    <li class="nav-item has-treeview {{request()->segment(2)=='orders' ? 'menu-open':''}}">
                         <a href="#" class="nav-link {{request()->segment(2)=='orders' ? 'active':''}}">
-                            <i class="nav-icon fa fa-edit"></i>
+                            <i class="nav-icon fa fa-file"></i>
                             <p>
-                                سيارات السائقين
+                                التحكم بالصفحات
                                 <i class="fa fa-angle-left right"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('car.index')}}"
-                                   class="nav-link {{request()->segment(3)=='cars' ? 'active' : ''}}">
+                                <a href="{{route('order.index')}}"
+                                   class="nav-link {{request()->segment(3)=='order' ? 'active' : ''}}">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>الكل</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('order.create')}}"
+                                   class="nav-link {{request()->segment(3)=='order' ? 'active' : ''}}">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>اضافة صفحة جديدة</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item has-treeview ">
+                        <a href="#" class="nav-link ">
+                            <i class="nav-icon fa fa-star"></i>
+                            <p>
+                                التقيمات
+                                <i class="fa fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('order.index')}}"
+                                   class="nav-link {{request()->segment(3)=='order' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>الكل</p>
                                 </a>
                             </li>
                         </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa fa-comment"></i>
+                            <p>
+                                الشكاوي والدعم
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fa fa-address-card"></i>
+                            <p>
+                                اتصل بنا</p>
+                        </a>
                     </li>
 
                 </ul>
