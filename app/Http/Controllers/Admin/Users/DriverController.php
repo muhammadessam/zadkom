@@ -10,9 +10,23 @@ use Illuminate\Support\Facades\Redirect;
 
 class DriverController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $drivers = Driver::all();
+        if ($request->has('filter')) {
+            if ($request->get('filter') == 'activeDrivers') {
+                $drivers = Driver::where('is_active', 1)->get();
+            } else if ($request->get('filter') == 'deactiveDrivers') {
+                $drivers = Driver::where('is_active', 0)->get();
+            } else if ($request->get('filter') == 'free') {
+                $drivers = Driver::where('status', 'free')->get();
+            } else if ($request->get('filter') == 'busy') {
+                $drivers = Driver::where('status', 'busy')->get();
+            } else {
+                $drivers = Driver::all();
+            }
+        } else {
+            $drivers = Driver::all();
+        }
         return view('Admin.Drivers.index', compact('drivers'));
     }
 
@@ -117,14 +131,18 @@ class DriverController extends Controller
         $driver->delete();
         return redirect()->route('driver.index');
     }
-    public function driverOrders($id){
+
+    public function driverOrders($id)
+    {
         $driver = Driver::find($id);
         $orders = $driver->orders;
-        return view('Admin.Drivers.orders',compact('orders'));
+        return view('Admin.Drivers.orders', compact('orders'));
     }
-    public function changeActive($id){
+
+    public function changeActive($id)
+    {
         $driver = Driver::find($id);
-        $driver->is_active = ! $driver->is_active;
+        $driver->is_active = !$driver->is_active;
         $driver->save();
         return Redirect::back();
     }

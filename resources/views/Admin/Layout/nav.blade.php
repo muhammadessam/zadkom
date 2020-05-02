@@ -1,6 +1,11 @@
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
     <!-- Right navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
+        </li>
+    </ul>
     <ul class="navbar-nav mr-auto">
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">

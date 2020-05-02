@@ -9,9 +9,23 @@ use App\Models\Store;
 
 class StoreController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $stores = Store::all();
+        if ($request->has('filter')) {
+            if ($request->get('filter') == 'activeStores') {
+                $stores = Store::where('is_active', 1)->get();
+            } else if ($request->get('filter') == 'deactiveStores') {
+                $stores = Store::where('is_active', 0)->get();
+            } else if ($request->get('filter') == 'is24Active') {
+                $stores = Store::where('is_24', 1)->get();
+            } else if ($request->get('filter') == 'isNot24Active') {
+                $stores = Store::where('is_24', 0)->get();
+            } else {
+                $stores = Store::all();
+            }
+        } else {
+            $stores = Store::all();
+        }
         return view('Admin.Stores.index', compact('stores'));
     }
 
