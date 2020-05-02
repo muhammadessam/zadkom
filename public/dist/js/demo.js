@@ -29,7 +29,7 @@
 
     $container.append(
         '<h5>تنظیمات قالب</h5><hr class="mb-2"/>'
-        + '<h6>رنگ‌های نوار ناوبری</h6>'
+        + '<h6>الوان الشريط العلوي</h6>'
     )
 
     var $navbar_variants = $('<div />', {
@@ -76,7 +76,7 @@
         }
     })
     $checkbox_container.append($navbar_border)
-    $checkbox_container.append('<span>مرز نوار ناوبری</span>')
+    $checkbox_container.append('<span>وضع ظل</span>')
     $container.append($checkbox_container)
 
 
@@ -101,7 +101,7 @@
         'sidebar-light-success'
     ]
 
-    $container.append('<h6>نوار تیره</h6>')
+    $container.append('<h6>الوان الاضاءة السوداء</h6>')
     var $sidebar_variants = $('<div />', {
         'class': 'd-flex'
     })
@@ -117,7 +117,7 @@
         $sidebar.addClass(sidebar_class)
     }))
 
-    $container.append('<h6>نوار روشن</h6>')
+    $container.append('<h6>الوان الاضاءة البيضاء</h6>')
     var $sidebar_variants = $('<div />', {
         'class': 'd-flex'
     })
@@ -134,14 +134,14 @@
     }))
 
     var logo_skins = navbar_all_colors
-    $container.append('<h6>رنگ برند لوگو</h6>')
+    $container.append('<h6>لون الرئيسة في الشريط الجانبي</h6>')
     var $logo_variants = $('<div />', {
         'class': 'd-flex'
     })
     $container.append($logo_variants)
     var $clear_btn = $('<a />', {
         href: 'javascript:void(0)'
-    }).text('پاک کردن').on('click', function () {
+    }).text('').on('click', function () {
         var $logo = $('.brand-link')
         logo_skins.map(function (skin) {
             $logo.removeClass(skin)
