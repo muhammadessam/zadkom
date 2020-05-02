@@ -1,5 +1,11 @@
 @extends('layouts.myapp')
 @section('content')
+    @if(! $is_null)
+        <div class="alert alert-warning" role="alert" style="margin: 0;text-align: center;">
+        نرجو منك اكمال البيان الخاصه بكم ..شكراً 
+            <a href="{{route('profile.edit',auth()->id())}}" class="alert-link">هنا</a>
+        </div>
+    @endif
     <div class="row">
         <img src="{{asset('images/bg1.png')}}">
     </div>
