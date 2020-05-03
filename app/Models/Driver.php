@@ -10,6 +10,7 @@ class Driver extends Model
 {
     use SoftDeletes;
     protected $guarded = [];
+    protected $with = ['car', 'user'];
 
     public function user()
     {

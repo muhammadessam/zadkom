@@ -146,4 +146,15 @@ class DriverController extends Controller
         $driver->save();
         return Redirect::back();
     }
+
+    public function addCar(Request $request, Driver $driver)
+    {
+        $driver_one = $driver;
+        return view('Admin.Cars.create', compact('driver_one'));
+    }
+
+    public function addCarPost(Request $request, Driver $driver_one)
+    {
+        dd($driver_one);
+    }
 }
