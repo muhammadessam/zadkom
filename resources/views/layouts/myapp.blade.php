@@ -15,7 +15,7 @@
     </style>
 <body>
     <?php $set = @App\Setting::first(); ?>
-    @if(! $set->is_closed)
+    @if(! $set->is_closed && $set != null)
         @include('layouts.nav')
         @yield('content')
         @include('layouts.footer')
