@@ -11,7 +11,7 @@
 </style>
     <div class="container">
         <div class="row">
-            <form action="{{route('settings.save')}}" method="post">
+            <form action="{{route('settings_save')}}" method="post">
                 @csrf
                 <div class="row">
                     <h4 class="col-md-12" >حالة الموقع</h4>
