@@ -8,6 +8,7 @@
             z-index: 5;
             top: 50px;
             left: 250px;
+            bottom:200px;
         }
     </style>
     <div class="row">
