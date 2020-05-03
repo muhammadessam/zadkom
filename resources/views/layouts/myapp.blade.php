@@ -26,6 +26,10 @@
                 {!! $set->close_msg !!}
             </div>
         @endif
+    @else
+        @include('layouts.nav')
+        @yield('content')
+        @include('layouts.footer')
     @endif
 </body>
 </html>
