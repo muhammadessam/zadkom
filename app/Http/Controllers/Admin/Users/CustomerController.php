@@ -68,7 +68,7 @@ class CustomerController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'phone' => $data['phone'],
-            'is_active' => $data['is_active'] == 'on' ? true : false,
+            'is_active' => $request['is_active'] == 'on' ? true : false,
             'type' => 'normal',
         ]);
 

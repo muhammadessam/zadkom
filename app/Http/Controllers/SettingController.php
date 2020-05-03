@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Setting;
+
 class SettingController extends Controller
 {
     public function edit()
@@ -14,7 +15,7 @@ class SettingController extends Controller
         }
         $set = Setting::first();
         return view('Admin.Setting.index',['set'=>$set]);
-        
+
     }
     public function save(Request $r)
     {

@@ -127,14 +127,13 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputFile">صورة التامين الطبي</label>
+                                    <label for="exampleInputFile">صورة التأمين </label>
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input @error('insurance_pic') is-invalid @enderror" name="insurance_pic"
                                                    id="exampleInputFile" value="{{old('insurance_pic')}}">
 
-                                            <label class="custom-file-label" for="exampleInputFile">الصورة التامين
-                                                الطبي</label>
+                                            <label class="custom-file-label" for="exampleInputFile">صورة التامين</label>
                                         </div>
                                         <div class="input-group-append">
                                             <span class="input-group-text" id="">ارسال صورة</span>

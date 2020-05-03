@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Driver;
 use Illuminate\Support\Facades\Redirect;
+use App\User;
 
 class DriverController extends Controller
 {
