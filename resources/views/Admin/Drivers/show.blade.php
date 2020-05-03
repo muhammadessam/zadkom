@@ -73,8 +73,6 @@
                         <td>العرض</td>
                         <td>الحالة</td>
                         <td>مقدم الطلب</td>
-                        <td>السائق</td>
-
                         <td>اجراء</td>
                     </tr>
                     </thead>
@@ -82,9 +80,10 @@
                     @foreach($driver->offers as $offer)
                         <tr>
                             <td>{{$offer->price}}</td>
-                            <td><span class="badge {{$offer->accepted ? 'badge-success' : 'badge-danger'}}">{{ $offer->accepted ? 'مقبول' : 'مرفوض' }}</span></td>
+                            <td><span
+                                    class="badge {{$offer->accepted ? 'badge-success' : 'badge-danger'}}">{{ $offer->accepted ? 'مقبول' : 'مرفوض' }}</span>
+                            </td>
                             <td>{{$offer->order->user->name}}</td>
-                            <td>{{$offer->driver->user->name}}</td>
                             <td style="text-align: center">
                                 <a class="btn btn-primary" href="{{route('offer.edit', $offer)}}"><i
                                         class="fa fa-edit"></i></a>
@@ -101,6 +100,61 @@
                     </tbody>
 
                 </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-10 offset-1">
+            <div class="card">
+                <div class="card-header">
+                    معلومات السيارة الخاصة بالسائق
+                </div>
+                @if(!is_null($driver->car))
+                    <div class="card-body">
+                        <table id="drivers" class="table table-bordered table-striped">
+                            <thead>
+                            <tr style="text-align: center">
+                                <th>النوع</th>
+                                <th>الموديل</th>
+                                <th>تاريخ التصنيع</th>
+                                <th>هوية السيارة</th>
+                                <th>رخصة السيارة</th>
+                                <th>اجراء</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr style="text-align: center">
+                                <td>{{$driver->car->type}}</td>
+                                <td>{{$driver->car->model}}</td>
+                                <td>{{$driver->car->manufacture_date}}</td>
+                                <td><img style="width: 50px;height: 50px" src="{{asset($driver->car->car_id_pic)}}"
+                                         alt="هوية السيارة"></td>
+                                <td><img style="width: 50px;height: 50px" src="{{asset($driver->car->license_pic)}}"
+                                         alt="هوية السيارة"></td>
+                                <td style="text-align: center">
+                                    <a class="btn btn-primary" href="{{route('car.edit', $driver->car)}}"><i
+                                            class="fa fa-edit"></i></a>
+                                    <form style="display: inline-block" action="{{route('car.destroy', $driver->car)}}"
+                                          method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="btn btn-danger" onclick="return myFunction();"><i
+                                                class="fa fa-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                @else
+                    <div class="card-body text-center">
+                        لا توجد سيارة
+                        <a class="btn btn-primary" href="{{route('addDriverCarForm', $driver)}}">اضافة سيارة</a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

@@ -63,7 +63,7 @@ class CarController extends Controller
         ]);
 
         alert()->success('تم', 'تم الاضافة بنجاح');
-        return redirect()->route('car.index');
+        return redirect()->route('driver.show', $request['driver_id']);
     }
 
     /**
@@ -125,7 +125,7 @@ class CarController extends Controller
             ]);
         }
         alert()->success('تم', 'تم التعديل بنجاح');
-        return redirect()->route('car.index');
+        return redirect()->route('driver.show', $request['driver_id']);
     }
 
     /**

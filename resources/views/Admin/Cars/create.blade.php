@@ -77,7 +77,8 @@
                                                    name="license_pic"
                                                    id="exampleInputFile" value="{{old('license_pic')}}">
 
-                                            <label class="custom-file-label" for="exampleInputFile">صورة رخصة السيارة</label>
+                                            <label class="custom-file-label" for="exampleInputFile">صورة رخصة
+                                                السيارة</label>
                                         </div>
                                         <div class="input-group-append">
                                             <span class="input-group-text" id="">ارسال صورة</span>
@@ -90,16 +91,19 @@
                                     @enderror
                                 </div>
 
-                                <div class="form-group">
-                                    <label>اختر سائق</label>
-                                    <select name="driver_id" class="form-control select2" style="width: 100%;">
-                                        @foreach(\App\Models\Driver::all() as $driver)
-                                            <option value="{{$driver->id}}">{{$driver->user->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-
+                                @if(isset($driver_one))
+                                    <input type="hidden" name="driver_id" value="{{$driver_one->id}}">
+                                @else
+                                    <div class="form-group">
+                                        <label>اختر سائق</label>
+                                        <select name="driver_id" class="form-control select2" style="width: 100%;">
+                                            @foreach(\App\Models\Driver::all() as $driver)
+                                                <option
+                                                    value="{{$driver->id}}">{{$driver->user->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                @endif
                                 <button class="btn btn-primary" type="submit">اضافة</button>
                             </form>
                         </div>
