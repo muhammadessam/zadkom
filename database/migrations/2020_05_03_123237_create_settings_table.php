@@ -20,7 +20,7 @@ class CreateSettingsTable extends Migration
             $table->boolean('allow_drivers')->default(0);
             $table->boolean('allow_stores')->default(0);
             $table->double('kilo')->default(1.0);
-            $table->text('contact')->default('');
+            $table->string('contact')->default('');
             $table->timestamps();
         });
     }
