@@ -16,7 +16,7 @@ class CreateSettingsTable extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->boolean('is_closed')->default(0);
-            $table->text('close_msg')->default("الموقع مغلق الان للصيانة");
+            $table->string('close_msg')->default("الموقع مغلق الان للصيانة");
             $table->boolean('allow_drivers')->default(0);
             $table->boolean('allow_stores')->default(0);
             $table->double('kilo')->default(1.0);
