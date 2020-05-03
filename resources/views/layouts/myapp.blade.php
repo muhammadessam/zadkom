@@ -15,15 +15,17 @@
     </style>
 <body>
     <?php $set = @App\Setting::first(); ?>
-    @if(! $set->is_closed && $set != null)
-        @include('layouts.nav')
-        @yield('content')
-        @include('layouts.footer')
-    @else
-        <div class="close-app">
-            <img src="{{asset('images/logo.png')}}" alt="" >
-            {!! $set->close_msg !!}
-        </div>
+    @if( $set != null)
+        @if(! $set->is_closed)
+            @include('layouts.nav')
+            @yield('content')
+            @include('layouts.footer')
+        @else
+            <div class="close-app">
+                <img src="{{asset('images/logo.png')}}" alt="" >
+                {!! $set->close_msg !!}
+            </div>
+        @endif
     @endif
 </body>
 </html>
