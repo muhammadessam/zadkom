@@ -48,7 +48,10 @@ class OfferController extends Controller
         ]);
         $request['accepted'] = $request['accepted'] ? true : false;
         $offer = Offer::create($request->all());
-        alert()->success('تم ', 'تم اضاة العرض بنجاح');
+        alert()->success('تم ', 'تمت بنجاح');
+        if (url()->previous() == route('addOrderOffer', $request['order_id'])) {
+            return \redirect()->route('order.show', $request['order_id']);
+        }
         return redirect()->route('offer.index');
     }
 

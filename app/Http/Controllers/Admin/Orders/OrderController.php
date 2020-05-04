@@ -51,6 +51,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'user_id' => 'required|exists:users,id',
             'lat' => 'required',
@@ -63,17 +64,20 @@ class OrderController extends Controller
         ]);
         $order = Order::create($request->all());
         alert()->success('تم الاضافة بنجاح');
+
+
         return \redirect()->route('order.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @param Order $order
+     * @return View
      */
-    public function show($id)
+    public function show(Order $order)
     {
+        return view('Admin.Orders.show', compact('order'));
     }
 
     /**
@@ -127,5 +131,10 @@ class OrderController extends Controller
         $order->delete();
         alert()->success('تم الحذف بنجاح');
         return back();
+    }
+
+    public function addOffer(Order $order)
+    {
+        return view('Admin.Offers.create', compact('order'));
     }
 }

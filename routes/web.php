@@ -50,6 +50,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function () 
     /*Offers*/
     Route::group(['prefix' => 'offers'], function () {
         Route::resource('offer', 'Admin\Offers\OfferController');
+        Route::get('{order}/addOffer', 'Admin\Orders\OrderController@addOffer')->name('addOrderOffer');
     });
 
     /*orders*/

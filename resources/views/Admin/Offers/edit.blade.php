@@ -29,12 +29,12 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>الطلب الخاص بالعضو</label>
+                                    <label>الطلب رقم</label>
                                     <select name="order_id" class="form-control select2" style="width: 100%;">
                                         @foreach(\App\Models\Order::all()->where('status', 'pending') as $order)
                                             <option
                                                 value="{{$order->id}}" {{$offer->order_id==$order->id ? 'selected' : ''}}>
-                                                {{$order->user->name}}
+                                                {{$order->id}}
                                             </option>
                                         @endforeach
                                     </select>
