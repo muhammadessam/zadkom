@@ -91,3 +91,4 @@ Route::get('contact',function()
    return view('site.contact');
 })->name('contact');
 Route::post('make-contact','ContactController@store')->name('make-contact');
+Route::post('send-mail','ContactController@send')->name('send-mail');

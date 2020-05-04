@@ -27,5 +27,25 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="">
+            <h4>ارسال رد</h4>
+            <form method="post" action="{{route('send-mail')}}">
+                @csrf
+                <div class="form-group">
+                    <label>ًإلي :</label>
+                    <select class="form-control" style="height: 35px;" name="contact_id">
+                        @foreach(@App\Contact::all() as $contact)
+                            <option value="{{$contact->id}}">{{$contact->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>ًالرسالة :</label>
+                    <textarea style="height: 300px" class="form-control" name="mail">
+                    </textarea>
+                </div>
+                <button type="submit" class="btn btn-block btn-success">ارسال</button>
+            </form>
+        </div>
     </div>
 @endsection
