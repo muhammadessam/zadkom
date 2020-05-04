@@ -26,7 +26,7 @@ class ContactController extends Controller
         Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email) {
             $message->to($to_email, $to_name)
                 ->subject('answer');
-        $message->from(env( 'MAIL_USERNAME'),env('APP_NAME'));
+        $message->from('ahmedtofahadev5@gmail.com',env('APP_NAME'));
         });
         alert()->success('تم الارسال بنجاح شكرا لك');
         return redirect()->back();
