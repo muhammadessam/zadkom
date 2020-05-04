@@ -12,7 +12,7 @@
             </div>
             <div class="form-group">
                 <label for="content">محتوي الصفحة</label>
-                <textarea id="editor" name="content" id="content" class="form-control" rows="50"></textarea>
+                <textarea id="editor" name="pageContent" id="content" class="form-control" rows="50"></textarea>
             </div>
             <button class="btn btn-block btn-success" type="submit">حفظ</button>
         </form>
