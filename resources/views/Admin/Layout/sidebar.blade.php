@@ -178,7 +178,7 @@
                     </li>
 
                     <li class="nav-item has-treeview {{request()->segment(2)=='orders' ? 'menu-open':''}}">
-                        <a href="#" class="nav-link {{request()->segment(2)=='orders' ? 'active':''}}">
+                        <a href="#" class="nav-link {{request()->segment(2)=='pages' ? 'active':''}}">
                             <i class="nav-icon fa fa-file"></i>
                             <p>
                                 التحكم بالصفحات
@@ -187,15 +187,15 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('order.index')}}"
+                                <a href="{{route('pages.index')}}"
                                    class="nav-link {{request()->segment(3)=='order' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>الكل</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('order.create')}}"
-                                   class="nav-link {{request()->segment(3)=='order' ? 'active' : ''}}">
+                                <a href="{{route('pages.create')}}"
+                                   class="nav-link">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>اضافة صفحة جديدة</p>
                                 </a>
