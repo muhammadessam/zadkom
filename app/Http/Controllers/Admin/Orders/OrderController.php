@@ -15,9 +15,21 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::all();
+        if ($request->has('filter')) {
+            if ($request->get('filter') == 'pending') {
+                $orders = Order::where('status', 'pending')->get();
+            } else if ($request->get('filter') == 'accepted') {
+                $orders = Order::where('status', 'accepted')->get();
+            } else if ($request->get('filter') == 'completed') {
+                $orders = Order::where('status', 'completed')->get();
+            } else {
+                $orders = Order::all();
+            }
+        } else {
+            $orders = Order::all();
+        }
         return view('Admin.Orders.index', compact('orders'));
     }
 
@@ -28,7 +40,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admin.Orders.create');
     }
 
     /**
@@ -39,12 +51,19 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $order = new Order();
-        $order->user_id = auth()->id();
-        $order->store_id = $request['store_id'];
-        $order->driver_id = $request['driver_id'];
-        $order->save();
-        return Redirect::back();
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'lat' => 'required',
+            'long' => 'required',
+            'status' => 'required',
+        ], [], [
+            'user_id' => 'العميل',
+            'lat' => 'العرض',
+            'long' => 'الطول'
+        ]);
+        $order = Order::create($request->all());
+        alert()->success('تم الاضافة بنجاح');
+        return \redirect()->route('order.index');
     }
 
     /**
@@ -55,32 +74,46 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        return new OrderResource(Order::find($id));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Order $order
+     * @return View
      */
-    public function edit($id)
+    public function edit(Request $request, Order $order)
     {
-        //
+        return view('Admin.Orders.edit', compact('order'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Order $order
+     * @return Route
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Order $order)
     {
-        $order = Order::find($id);
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'lat' => 'required',
+            'long' => 'required',
+            'status' => 'required',
+        ], [], [
+            'user_id' => 'العميل',
+            'lat' => 'العرض',
+            'long' => 'الطول',
+            'status' => 'الحالة',
+        ]);
+        if ($request['status'] == 'pending') {
+            $request['driver_id'] = null;
+        }
         $order->update($request->all());
-        return Redirect::back();
+        alert()->success('تم بنجاح');
+        return redirect()->route('order.index');
     }
 
     /**
@@ -89,10 +122,10 @@ class OrderController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Order $order)
     {
-        $order = Order::find($id);
         $order->delete();
-        return Redirect::back();
+        alert()->success('تم الحذف بنجاح');
+        return back();
     }
 }

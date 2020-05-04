@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Store;
+use App\User;
 
 class StoreController extends Controller
 {
@@ -64,7 +65,7 @@ class StoreController extends Controller
             'is_24' => 'فعال 24 ساعة',
             'is_active' => 'فعال',
         ]);
-        $user = \App\Admin::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),

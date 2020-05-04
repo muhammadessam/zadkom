@@ -162,14 +162,14 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{{route('order.index')}}"
-                                   class="nav-link {{request()->segment(3)=='order' ? 'active' : ''}}">
+                                   class="nav-link {{request()->segment(3)=='order' &&request()->segment(4)!='create' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>الكل</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{route('order.create')}}"
-                                   class="nav-link {{request()->segment(3)=='order' ? 'active' : ''}}">
+                                   class="nav-link {{request()->segment(3)=='order' &&request()->segment(4)=='create' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>اضافة طلب جديد</p>
                                 </a>
@@ -177,7 +177,11 @@
                         </ul>
                     </li>
 
+<<<<<<< HEAD
                     <li class="nav-item has-treeview {{request()->segment(2)=='orders' ? 'menu-open':''}}">
+=======
+                    <li class="nav-item has-treeview {{request()->segment(2)=='pages' ? 'menu-open':''}}">
+>>>>>>> ee0c9219d6cae22ced617a4f5da8c927cdc62a7f
                         <a href="#" class="nav-link {{request()->segment(2)=='pages' ? 'active':''}}">
                             <i class="nav-icon fa fa-file"></i>
                             <p>
@@ -187,15 +191,25 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
+<<<<<<< HEAD
                                 <a href="{{route('pages.index')}}"
                                    class="nav-link {{request()->segment(3)=='order' ? 'active' : ''}}">
+=======
+                                <a href="{{route('order.index')}}"
+                                   class="nav-link {{request()->segment(3)=='pages' ? 'active' : ''}}">
+>>>>>>> ee0c9219d6cae22ced617a4f5da8c927cdc62a7f
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>الكل</p>
                                 </a>
                             </li>
                             <li class="nav-item">
+<<<<<<< HEAD
                                 <a href="{{route('pages.create')}}"
                                    class="nav-link">
+=======
+                                <a href="{{route('order.create')}}"
+                                   class="nav-link {{request()->segment(3)=='pages' ? 'active' : ''}}">
+>>>>>>> ee0c9219d6cae22ced617a4f5da8c927cdc62a7f
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>اضافة صفحة جديدة</p>
                                 </a>

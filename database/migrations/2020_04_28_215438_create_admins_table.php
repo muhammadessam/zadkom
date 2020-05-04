@@ -24,6 +24,12 @@ class CreateAdminsTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+        DB::table('admins')->insert([
+           'name'=>'Admin',
+           'email'=>'admin@zadkom.com',
+            'password'=>\Illuminate\Support\Facades\Hash::make('123456'),
+            'phone'=>'01116535030',
+        ]);
     }
 
     /**

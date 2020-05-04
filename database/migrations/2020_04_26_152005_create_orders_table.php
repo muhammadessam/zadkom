@@ -15,13 +15,14 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->text('description')->nullable()->default(null);
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->on('users')->references('id')->onDelete('cascade');
-            $table->bigInteger('store_id')->unsigned();
+            $table->bigInteger('store_id')->unsigned()->nullable();
             $table->foreign('store_id')->on('stores')->references('id')->onDelete('cascade');
-            $table->bigInteger('driver_id')->unsigned();
+            $table->bigInteger('driver_id')->nullable()->default(null)->unsigned();
             $table->foreign('driver_id')->on('drivers')->references('id')->onDelete('cascade');
-            $table->string('status')->default('pending');
+            $table->enum('status', ['pending', 'accepted', 'completed'])->default('pending');
             $table->double('fees')->default(0.00);
             $table->timestamps();
         });

@@ -29,7 +29,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function () 
         /*drivers Route and filtering*/
         Route::resource('driver', 'Admin\Users\DriverController');
         Route::get('{driver}/addCar', 'Admin\Users\DriverController@addCar')->name('addDriverCarForm');
-        Route::post('{driver}/addCar', 'Admin\Users\DriverController@addCarPost')->name('addDriverCarPost');
 
         Route::resource('store', 'Admin\Users\StoreController');
 
