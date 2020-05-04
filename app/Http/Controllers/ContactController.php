@@ -28,5 +28,7 @@ class ContactController extends Controller
                 ->subject('answer');
         $message->from(env( 'MAIL_USERNAME'),env('APP_NAME'));
         });
+        alert()->success('تم الارسال بنجاح شكرا لك');
+        return redirect()->back();
     }
 }
