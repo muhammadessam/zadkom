@@ -28,14 +28,20 @@
                                     @enderror
                                 </div>
 
-                                <div class="form-group">
-                                    <label>الطلب الخاص بالعضو</label>
-                                    <select name="order_id" class="form-control select2" style="width: 100%;">
-                                        @foreach(\App\Models\Order::all()->where('status', 'pending') as $order)
-                                            <option value="{{$order->id}}">{{$order->user->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                @if(!isset($order))
+                                    <div class="form-group">
+                                        <label>الطلب رقم</label>
+                                        <select name="order_id" class="form-control select2" style="width: 100%;">
+                                            @foreach(\App\Models\Order::all()->where('status', 'pending') as $order)
+                                                <option value="{{$order->id}}">{{$order->id}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                @else
+                                    <div class="form-group">
+                                        <input name="order_id" hidden value="{{$order->id}}">
+                                    </div>
+                                @endif
 
                                 <div class="form-group">
                                     <label>السائق مقدم العرض</label>

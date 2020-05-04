@@ -13,7 +13,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <table id="products" class="table table-bordered table-striped text-center">
+                    <table id="offers" class="table table-bordered table-striped text-center">
                         <thead>
                         <tr>
                             <td>العرض</td>
@@ -60,7 +60,7 @@
 @section('javascript')
     <script>
         $(function () {
-            $("#products").DataTable({
+            $("#offers").DataTable({
                 "language": {
                     "paginate": {
                         "next": "التالي",

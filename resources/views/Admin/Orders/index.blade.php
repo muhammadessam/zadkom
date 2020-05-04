@@ -131,6 +131,8 @@
                                     {{$order->totalPrice ?$order->totalPrice:'-' }}
                                 </td>
                                 <td style="text-align: center">
+                                    <a class="btn btn-primary" href="{{route('order.show', $order)}}"><i
+                                            class="fa fa-eye"></i></a>
                                     <a class="btn btn-primary" href="{{route('order.edit', $order)}}"><i
                                             class="fa fa-edit"></i></a>
                                     <form style="display: inline-block" action="{{route('order.destroy', $order)}}"
