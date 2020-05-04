@@ -234,7 +234,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{route('all-contacts')}}" class="nav-link">
                             <i class="nav-icon fa fa-address-card"></i>
                             <p>
                                 اتصل بنا</p>

@@ -1,5 +1,7 @@
 @extends('Admin.Layout.layout')
 @section('content')
+<link rel="stylesheet" href="{{asset('sceditor/minified/themes/default.min.css')}}" />
+<script src="{{asset('sceditor/minified/sceditor.min.js')}}"></script>
     <div class="container">
         <h3>انشاء صفحة جديدة</h3>
         <form action="{{route('pages.store')}}" method="post">
@@ -10,20 +12,19 @@
             </div>
             <div class="form-group">
                 <label for="content">محتوي الصفحة</label>
-                <textarea name="content" id="content" class="form-control" rows="50"></textarea>
+                <textarea id="editor" name="content" id="content" class="form-control" rows="50"></textarea>
             </div>
             <button class="btn btn-block btn-success" type="submit">حفظ</button>
         </form>
     </div>
-    <script src="https://cdn.tiny.cloud/1/3yflwy460rfp4vet4xyw6jn4y26ai7kuxmc5hyzr2mg82ni9/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="{{asset('sceditor/minified/formats/bbcode.min.js')}}"></script>
     <script>
-    tinymce.init({
-      selector: 'textarea',
-      plugins: 'a11ychecker advcode image  casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
-      toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
-      toolbar_mode: 'floating',
-      tinycomments_mode: 'embedded',
-      tinycomments_author: 'Author name',
+    // Replace the textarea #example with SCEditor
+    var textarea = document.getElementById('editor');
+    sceditor.create(textarea, {
+        format: 'bbcode',
+        style: "{{asset('sceditor/minified/themes/content/default.min.css')}}"
     });
-  </script>
+    </script>
+
 @endsection

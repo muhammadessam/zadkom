@@ -1,7 +1,8 @@
 <nav class="mynav">
     <img src="{{asset('images/logo.png')}}">
     <ul>
-        <li><a href="/" >   الرئيسية</a></li>
+        <li><a href="{{route('index')}}" >   الرئيسية</a></li>
+        <li><a href="{{route('contact')}}" >   تواصل معنا</a></li>
         @foreach(@App\Models\Page::all() as $page)
         <li><a href="{{route('page',$page->id)}}" >{{$page->name}}</a></li>
         @endforeach

@@ -12,7 +12,7 @@
 */
 
 
-Route::get('/', 'Site\Home\IndexController@Home');
+Route::get('/', 'Site\Home\IndexController@Home')->name('index');
 
 Auth::routes();
 
@@ -20,6 +20,10 @@ Auth::routes();
 Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function () {
     Route::get('driver_orders/{id}', 'Admin\Users\DriverController@driverOrders')->name('driver_orders');
     Route::get('driver_active/{id}', 'Admin\Users\DriverController@changeActive')->name('driver_active');
+    Route::get('all-contacts',function()
+    {
+        return view('Admin.contacts');
+    })->name('all-contacts');
     Route::get('/', 'Admin\DashBoard\IndexController@index')->name('dashboardHome');
     Route::get('settings','SettingController@edit')->name('settings.edit');
     Route::post('settingsSave','SettingController@save')->name('settings_save');
@@ -79,3 +83,10 @@ Route::get('/nots', function () {
     return view('site.nots');
 })->name('nots');
 Route::get('/page/{id}','PageController@show')->name('page');
+
+// Contact
+Route::get('contact',function()
+{
+   return view('site.contact');
+})->name('contact');
+Route::post('make-contact','ContactController@store')->name('make-contact');
