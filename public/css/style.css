@@ -18,14 +18,13 @@
 .mynav ul li{
     float: right;
     text-align: center;
-    width: 250px;
+    width: fit-content;
+    margin-left: 1rem;
 }
-.mynav ul li:hover{
-    background-color: #e18d00;
-}
+
 .mynav ul li a{
     color: #735d0e;
-    font-size: 20px;
+    font-size: 1.2vw;
     font-weight: 700;
     display: block;
 }
