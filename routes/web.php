@@ -79,3 +79,8 @@ Route::get('/nots', function () {
     return view('site.nots');
 })->name('nots');
 Route::get('/page/{id}','PageController@show')->name('page');
+
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+    });
