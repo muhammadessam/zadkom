@@ -37,7 +37,7 @@ class PageController extends Controller
     {
         $page = new Page();
         $page->name = $request->name;
-        $page->content = $request->content;
+        $page->content = $request->pageContent;
         $page->save();
         return redirect()->back();
     }
