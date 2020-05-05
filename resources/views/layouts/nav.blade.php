@@ -1,21 +1,4 @@
-<style>
-.mynav ul li{
-    float: right;
-    text-align: center;
-    width: fit-content !important;
-    margin-left: 1rem !important;
-}
 
-.mynav ul li a{
-    color: #735d0e;
-    font-size: 1.2vw !important;
-    font-weight: 700;
-    display: block;
-}
-.mynav ul li:hover{
-    background-color:none !important;
-}
-</style>
 <nav class="mynav">
     <img src="{{asset('images/logo.png')}}">
     <ul>
