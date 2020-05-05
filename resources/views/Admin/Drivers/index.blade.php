@@ -116,7 +116,7 @@
                     <table style="text-align: center" id="drivers" class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            <th>لاسم</th>
+                            <th>الاسم</th>
                             <th>حالة التفعيل</th>
                             <th>حالة التوصيل</th>
                             <th>الطلبات</th>
@@ -129,8 +129,7 @@
                         <tbody>
                         @foreach($drivers as $driver)
                             <tr>
-                                <td><a class="btn btn-outline-dark"
-                                       href="{{route('driver.show', $driver)}}">{{$driver->user->name}}</a></td>
+                                <td>{{$driver->user->name}}</td>
                                 <td>
                                     @if($driver->is_active)
                                         <label class="btn btn-success btn-sm">مفعل</label>
@@ -161,6 +160,8 @@
                                          alt="لم يضع صورة شخصية"></td>
                                 <td style="text-align: center">{{$driver->car != null ? $driver->car->type : 'لم يسجل سيارة'}}</td>
                                 <td style="text-align: center">
+                                    <a class="btn btn-primary"
+                                       href="{{route('driver.show', $driver)}}"><i class="fa fa-eye"></i></a>
                                     <a class="btn btn-primary" href="{{route('driver.edit', $driver)}}"><i
                                             class="fa fa-edit"></i></a>
                                     <form style="display: inline-block"

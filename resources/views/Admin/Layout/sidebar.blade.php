@@ -176,7 +176,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item has-treeview {{request()->segment(2)=='orders' ? 'menu-open':''}}">
+                    <li class="nav-item has-treeview {{request()->segment(2)=='pages' ? 'menu-open':''}}">
 
                         <a href="#" class="nav-link {{request()->segment(2)=='pages' ? 'active':''}}">
                             <i class="nav-icon fa fa-file"></i>
@@ -188,15 +188,15 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{{route('pages.index')}}"
-                                   class="nav-link {{request()->segment(3)=='order' ? 'active' : ''}}">
+                                   class="nav-link {{request()->segment(2)=='pages' && request()->segment(3)!='create' ? 'active' : ''}}">
 
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>الكل</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item ">
                                 <a href="{{route('pages.create')}}"
-                                   class="nav-link">
+                                   class="nav-link {{ (request()->segment(2)=='pages') && (request()->segment(3)=='create') ? 'active' : ''}}">
 
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>اضافة صفحة جديدة</p>
@@ -205,8 +205,8 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item has-treeview ">
-                        <a href="#" class="nav-link ">
+                    <li class="nav-item has-treeview {{request()->segment(2)=='ratings' ? 'menu-open' : ''}}">
+                        <a href="#" class="nav-link {{request()->segment(2)=='ratings' ? 'active' : ''}}">
                             <i class="nav-icon fa fa-star"></i>
                             <p>
                                 التقيمات
@@ -215,8 +215,8 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('order.index')}}"
-                                   class="nav-link {{request()->segment(3)=='order' ? 'active' : ''}}">
+                                <a href="{{route('rating.index')}}"
+                                   class="nav-link {{request()->segment(3)=='rating' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>الكل</p>
                                 </a>

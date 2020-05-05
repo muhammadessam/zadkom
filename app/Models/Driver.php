@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Driver extends Model
 {
     use SoftDeletes;
+
     protected $guarded = [];
     protected $with = ['car', 'user'];
 
@@ -30,5 +31,10 @@ class Driver extends Model
     public function orders()
     {
         return $this->hasMany(Order::class, 'driver_id', 'id');
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class, 'driver_id', 'id');
     }
 }

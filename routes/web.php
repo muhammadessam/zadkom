@@ -63,6 +63,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function () 
     Route::prefix('cars')->group(function () {
         Route::resource('car', 'Admin\Cars\CarController');
     });
+    Route::prefix('ratings')->group(function () {
+        Route::resource('rating', 'Admin\Ratings\RatingController');
+        Route::get('{driver}/addRating', 'Admin\Ratings\RatingController@addDriverRating')->name('addDriverRating');
+
+    });
 
     Route::resource('nots', 'NotController');
 

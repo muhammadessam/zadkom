@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Models\Order;
+use App\Models\Rating;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -59,5 +60,9 @@ class User extends Authenticatable
     public function nots()
     {
         return $this->hasMany('App\Models\Not' , 'user_id' ,'id');
+    }
+
+    public function ratings(){
+        return $this->hasMany(Rating::class, 'customer_id', 'id');
     }
 }

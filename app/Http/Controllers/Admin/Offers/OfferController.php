@@ -37,6 +37,7 @@ class OfferController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'price' => 'required',
             'order_id' => 'required',
