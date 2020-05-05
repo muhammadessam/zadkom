@@ -38,7 +38,8 @@ class DriverController extends Controller
 
     public function show(Driver $driver)
     {
-        return view('Admin.Drivers.show', compact('driver'));
+        $rating = $driver->ratings()->sum('value') /$driver->ratings->count() ;
+        return view('Admin.Drivers.show', compact('driver', 'rating'));
     }
 
     public function store(Request $request)
