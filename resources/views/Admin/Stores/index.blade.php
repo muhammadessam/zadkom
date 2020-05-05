@@ -114,8 +114,7 @@
                         <tbody>
                         @foreach($stores as $store)
                             <tr style="text-align: center">
-                                <td><a class="btn btn-outline-dark"
-                                       href="{{route('store.show', $store)}}">{{$store->name}}</a></td>
+                                <td>{{$store->name}}</td>
                                 <td>{{$store->user->phone}}</td>
                                 <td><img style="width: 50px; height: 50px" src="{{asset($store->user->profile_pic)}}"
                                          alt="لم يضع صورة شخصية"></td>
@@ -129,6 +128,8 @@
                                         class="badge {{$store->is_active ? 'badge-success' : 'badge-danger'}}">{{$store->is_active ? 'نعم': 'لا'}}</span>
                                 </td>
                                 <td style="text-align: center">
+                                    <a class="btn btn-primary"
+                                       href="{{route('store.show', $store)}}"><i class="fa fa-eye"></i></a>
                                     <a class="btn btn-primary" href="{{route('store.edit', $store)}}"><i
                                             class="fa fa-edit"></i></a>
                                     <form style="display: inline-block" action="{{route('store.destroy', $store)}}"
