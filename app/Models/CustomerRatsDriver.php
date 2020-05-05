@@ -5,9 +5,9 @@ namespace App\Models;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
-class Rating extends Model
+class CustomerRatsDriver extends Model
 {
-    protected $table = 'ratings';
+    protected $table = 'customer_rats_drivers';
     protected $guarded = [];
 
     public function driver()

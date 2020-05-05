@@ -215,10 +215,17 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('rating.index')}}"
-                                   class="nav-link {{request()->segment(3)=='rating' ? 'active' : ''}}">
+                                <a href="{{route('driverRating.index')}}"
+                                   class="nav-link {{request()->segment(3)=='driverRating' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
-                                    <p>الكل</p>
+                                    <p>تقيمات العملاء للسائقين</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('customerRating.index')}}"
+                                   class="nav-link {{request()->segment(3)=='customerRating' ? 'active' : ''}}">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>تقيمات السائقين للعملاء</p>
                                 </a>
                             </li>
                         </ul>

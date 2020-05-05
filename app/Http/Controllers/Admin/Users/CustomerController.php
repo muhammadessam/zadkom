@@ -88,7 +88,8 @@ class CustomerController extends Controller
      */
     public function show(User $user)
     {
-        return view('Admin.Customers.show', compact('user'));
+        $rating =$user->ratedByDriver->count() ? round($user->ratedByDriver()->sum('value') / $user->ratedByDriver->count(), 2) : 'لا توجد تقيمات';
+        return view('Admin.Customers.show', compact('user', 'rating'));
     }
 
     /**

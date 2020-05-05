@@ -2,8 +2,9 @@
 
 namespace App;
 
+use App\Models\DriverRatsCustomer;
 use App\Models\Order;
-use App\Models\Rating;
+use App\Models\CustomerRatsDriver;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -57,12 +58,19 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class, 'user_id', 'id');
     }
+
     public function nots()
     {
-        return $this->hasMany('App\Models\Not' , 'user_id' ,'id');
+        return $this->hasMany('App\Models\Not', 'user_id', 'id');
     }
 
-    public function ratings(){
-        return $this->hasMany(Rating::class, 'customer_id', 'id');
+    public function ratesDriver()
+    {
+        return $this->hasMany(CustomerRatsDriver::class, 'customer_id', 'id');
+    }
+
+    public function ratedByDriver()
+    {
+        return $this->hasMany(DriverRatsCustomer::class, 'customer_id', 'id');
     }
 }

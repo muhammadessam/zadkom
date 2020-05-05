@@ -7,7 +7,7 @@
 
                     <div class="col-6"><h3 class="card-title">جميع التقيمات</h3></div>
 
-                    <div class="col-6 text-left"><a class="col- btn btn-primary" href="{{route('rating.create')}}">اضافة</a></div>
+                    <div class="col-6 text-left"><a class="col- btn btn-primary" href="{{route('customerRating.create')}}">اضافة</a></div>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -52,7 +52,7 @@
                                 </td>
                                 <td class="d-flex justify-content-center">
                                     <form class="form-inline" method="post"
-                                          action="{{route('rating.destroy', $rating)}}">
+                                          action="{{route('customerRating.destroy', $rating)}}">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-danger" type="submit"><i class="fa fa-trash"></i>

@@ -5,18 +5,18 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-lg-between">
-                    <h3 class="card-title">اضافة سائق</h3>
+                    <h3 class="card-title">اضافة تقيم سائق</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
 
-                            <form action="{{route('rating.store')}}" method="post">
+                            <form action="{{route('driverRating.store')}}" method="post">
 
                                 @csrf
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">الاسم</label>
+                                    <label for="exampleInputEmail1">التقيم قيمة من 1 الي 5</label>
                                     <input type="number" name="value" min="1" max="5"
                                            class="form-control @error('name') is-invalid @enderror" id="name"
                                            placeholder="القيمة من 1 الي 5 " value="{{old('value')}}">
@@ -42,17 +42,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>اختر سائق</label>
-                                    <select name="driver_id" class="form-control select2" style="width: 100%;">
-                                        @foreach(\App\Models\Driver::all() as $driver)
-                                            <option value="{{$driver->id}}">{{$driver->user->name}}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('driver_id')
-                                    <div style="margin-top: 2px" class="alert alert-danger">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
+                                    <input type="hidden" name="driver_id" value="{{$driver->id}}">
                                 </div>
 
                                 <button class="btn btn-primary" type="submit">اضافة</button>

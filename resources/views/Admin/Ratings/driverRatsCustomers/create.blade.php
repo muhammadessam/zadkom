@@ -12,8 +12,7 @@
                     <div class="row">
                         <div class="col-12">
 
-                            <form action="{{route('rating.store')}}" method="post">
-
+                            <form action="{{route('customerRating.store')}}" method="post">
                                 @csrf
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">الاسم</label>
@@ -42,7 +41,17 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="hidden" name="driver_id" value="{{$driver->id}}">
+                                    <label>اختر سائق</label>
+                                    <select name="driver_id" class="form-control select2" style="width: 100%;">
+                                        @foreach(\App\Models\Driver::all() as $driver)
+                                            <option value="{{$driver->id}}">{{$driver->user->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('driver_id')
+                                    <div style="margin-top: 2px" class="alert alert-danger">
+                                        {{$message}}
+                                    </div>
+                                    @enderror
                                 </div>
 
                                 <button class="btn btn-primary" type="submit">اضافة</button>
