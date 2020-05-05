@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin\Ratings;
 
 use App\Models\Driver;
-use App\Models\Rating;
+use App\Models\CustomerRatsDriver;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class RatingController extends Controller
+class CustomerRatsDriversController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class RatingController extends Controller
      */
     public function index()
     {
-        $ratings = Rating::all();
-        return view('Admin.Ratings.index', compact('ratings'));
+        $ratings = CustomerRatsDriver::all();
+        return view('Admin.Ratings.customerRatsDrivers.index', compact('ratings'));
     }
 
     /**
@@ -27,7 +27,7 @@ class RatingController extends Controller
      */
     public function create()
     {
-        return view('Admin.Ratings.create');
+        return view('Admin.Ratings.customerRatsDrivers.create');
     }
 
     /**
@@ -48,11 +48,11 @@ class RatingController extends Controller
             'driver_id' => 'السائق',
         ]);
 
-        Rating::create($request->all());
+        CustomerRatsDriver::create($request->all());
         alert()->success('تم بنجاح');
         if (url()->previous() == route('addDriverRating', $request['driver_id']))
             return redirect()->route('driver.show', $request['driver_id']);
-        return redirect()->route('rating.index');
+        return redirect()->route('driverRating.index');
     }
 
     /**
@@ -61,7 +61,7 @@ class RatingController extends Controller
      * @param \App\Rating $rating
      * @return \Illuminate\Http\Response
      */
-    public function show(Rating $rating)
+    public function show(CustomerRatsDriver $rating)
     {
         //
     }
@@ -72,7 +72,7 @@ class RatingController extends Controller
      * @param \App\Rating $rating
      * @return \Illuminate\Http\Response
      */
-    public function edit(Rating $rating)
+    public function edit(CustomerRatsDriver $rating)
     {
         //
     }
@@ -84,7 +84,7 @@ class RatingController extends Controller
      * @param \App\Rating $rating
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rating $rating)
+    public function update(Request $request, CustomerRatsDriver $rating)
     {
         //
     }
@@ -95,15 +95,15 @@ class RatingController extends Controller
      * @param \App\Rating $rating
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Rating $rating)
+    public function destroy(CustomerRatsDriver $driverRating)
     {
-        $rating->delete();
+        $driverRating->delete();
         alert()->success('تم بنجاح');
-        return redirect()->route('rating.index');
+        return redirect()->route('driverRating.index');
     }
 
     public function addDriverRating(Driver $driver)
     {
-        return view('Admin.Ratings.addRating', compact('driver'));
+        return view('Admin.Ratings.customerRatsDrivers.addRating', compact('driver'));
     }
 }

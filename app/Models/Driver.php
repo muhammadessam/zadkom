@@ -33,8 +33,13 @@ class Driver extends Model
         return $this->hasMany(Order::class, 'driver_id', 'id');
     }
 
-    public function ratings()
+    public function ratedByCustomer()
     {
-        return $this->hasMany(Rating::class, 'driver_id', 'id');
+        return $this->hasMany(CustomerRatsDriver::class, 'driver_id', 'id');
+    }
+
+    public function ratesCustomer()
+    {
+        return $this->hasMany(DriverRatsCustomer::class, 'driver_id', 'id');
     }
 }

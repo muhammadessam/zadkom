@@ -71,6 +71,7 @@
         <div class="col-10 card offset-1">
             <div class="card-header d-flex justify-content-lg-between">
                 <h3 class="card-title">كل العروض المقدمة من السائق</h3>
+                
             </div>
             <div class="card-body card-primary">
                 <table id="offers" class="table table-bordered table-striped text-center">

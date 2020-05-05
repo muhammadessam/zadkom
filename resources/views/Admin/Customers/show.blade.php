@@ -1,5 +1,11 @@
 @extends('Admin.Layout.layout')
 @section('content')
+    <div class="text-center mb-2">
+        <a href="{{route('addCustomerRating', $user)}}" class="btn btn-primary">تقيم</a>
+    </div>
+    <div class="text-center mb-2">
+        <h3>{{$rating}} <span class="fa fa-star text-warning"></span></h3>
+    </div>
     <div class="col-md-6 offset-3">
 
         <!-- Profile Image -->
