@@ -1,8 +1,8 @@
 @extends('Admin.Layout.layout')
 @section('content')
-    <div class="container-fluid">
+    <div class="container container-fluid">
         <h1>لوحة التحكم شاشة العرض</h1>
-        <div class="row">
+        <div class="row pr-5 pl-5">
             <div class="col-sm-3">
                 <!-- small box -->
                 <div class="small-box bg-success-gradient">
@@ -14,7 +14,7 @@
                     <div class="icon">
                         <i class="ion ion-person"></i>
                     </div>
-                    <a href="{{route('driver.index')."?filter=all"}}" class="small-box-footer">مشاهدة<i
+                    <a href="{{route('customer.index')}}" class="small-box-footer">مشاهدة<i
                             class="fa fa-arrow-circle-left"></i></a>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     <div class="icon">
                         <i class="ion ion-person "></i>
                     </div>
-                    <a href="{{route('driver.index')."?filter=all"}}" class="small-box-footer">مشاهدة<i
+                    <a href="{{route('driver.index').'?filter=all'}}" class="small-box-footer">مشاهدة<i
                             class="fa fa-arrow-circle-left"></i></a>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                     <div class="icon">
                         <i class="ion ion-person-add "></i>
                     </div>
-                    <a href="{{route('driver.index')."?filter=all"}}" class="small-box-footer">مشاهدة<i
+                    <a href="{{route('driver.index').'?filter=activeDrivers'}}" class="small-box-footer">مشاهدة<i
                             class="fa fa-arrow-circle-left"></i></a>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                     <div class="icon">
                         <i class="ion ion-person-add "></i>
                     </div>
-                    <a href="{{route('driver.index')."?filter=all"}}" class="small-box-footer">مشاهدة<i
+                    <a href="{{route('driver.index').'?filter=deactiveDrivers'}}" class="small-box-footer">مشاهدة<i
                             class="fa fa-arrow-circle-left"></i></a>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                     <div class="icon">
                         <i class="ion ion-person-add "></i>
                     </div>
-                    <a href="{{route('driver.index')."?filter=all"}}" class="small-box-footer">مشاهدة<i
+                    <a href="{{route('store.index').'?filter=activeStores'}}" class="small-box-footer">مشاهدة<i
                             class="fa fa-arrow-circle-left"></i></a>
                 </div>
             </div>
@@ -88,7 +88,7 @@
                     <div class="icon">
                         <i class="ion ion-person-add "></i>
                     </div>
-                    <a href="{{route('driver.index')."?filter=all"}}" class="small-box-footer">مشاهدة<i
+                    <a href="{{route('store.index').'?filter=deactiveStores'}}" class="small-box-footer">مشاهدة<i
                             class="fa fa-arrow-circle-left"></i></a>
                 </div>
             </div>
@@ -103,7 +103,7 @@
                     <div class="icon">
                         <i class="ion ion-person-add "></i>
                     </div>
-                    <a href="{{route('driver.index')."?filter=all"}}" class="small-box-footer">مشاهدة<i
+                    <a href="{{route('order.index')}}" class="small-box-footer">مشاهدة<i
                             class="fa fa-arrow-circle-left"></i></a>
                 </div>
             </div>
@@ -118,7 +118,7 @@
                     <div class="icon">
                         <i class="ion ion-person-add "></i>
                     </div>
-                    <a href="{{route('driver.index')."?filter=all"}}" class="small-box-footer">مشاهدة<i
+                    <a href="{{route('product.index')}}" class="small-box-footer">مشاهدة<i
                             class="fa fa-arrow-circle-left"></i></a>
                 </div>
             </div>
@@ -133,7 +133,7 @@
                     <div class="icon">
                         <i class="ion ion-person-add "></i>
                     </div>
-                    <a href="{{route('driver.index')."?filter=all"}}" class="small-box-footer">مشاهدة<i
+                    <a href="{{route('all-contacts')}}" class="small-box-footer">مشاهدة<i
                             class="fa fa-arrow-circle-left"></i></a>
                 </div>
             </div>
