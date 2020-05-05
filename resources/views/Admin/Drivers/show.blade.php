@@ -1,18 +1,20 @@
 @extends('Admin.Layout.layout')
 @section('content')
-    <div class="col-md-6 offset-3">
-        <div class="text-center mb-2">
-            <a href="{{route('addDriverRating', $driver)}}" class="btn btn-primary">تقيم</a>
-        </div>
-        <div class="text-center mb-2">
-            <h3>{{$rating}} <span class="fa fa-star text-warning"></span></h3>
-        </div>
+    <div class="text-center mb-2">
+        <a href="{{route('addDriverRating', $driver)}}" class="btn btn-primary">تقيم</a>
+    </div>
+    <div class="text-center mb-2">
+        <h3>{{$rating}} <span class="fa fa-star text-warning"></span></h3>
+    </div>
+
+    <div class="row d-flex  ">
         <!-- Profile Image -->
-        <div class="card card-primary card-outline">
+        <div style="width: 49%" class="m-1 card card-primary card-outline">
 
             <div class="card-body box-profile">
                 <div class="text-center">
-                    <img class="profile-user-img img-fluid img-circle" src="{{asset($driver->user->profile_pic)}}"
+                    <img style="width: 100px;height: 100px;" class="profile-user-img img-fluid img-circle"
+                         src="{{asset($driver->user->profile_pic)}}"
                          alt="الصورة الشخصية">
                 </div>
 
@@ -37,7 +39,7 @@
         <!-- /.card -->
 
         <!-- About Me Box -->
-        <div class="card card-primary">
+        <div style="width: 49%" class="m-1 card card-primary">
             <div class="card-header">
                 <h3 class="card-title">المستندات</h3>
             </div>
@@ -64,16 +66,17 @@
 
 
     </div>
+
     <div class="row ">
         <div class="col-10 card offset-1">
             <div class="card-header d-flex justify-content-lg-between">
                 <h3 class="card-title">كل العروض المقدمة من السائق</h3>
                 <div>
-                    <a class="btn btn-primary" href="{{route('product.create')}}">اضافة عرض</a>
+                    <a class="btn btn-primary" href="{{route('offer.create')}}">اضافة عرض</a>
                 </div>
             </div>
             <div class="card-body card-primary">
-                <table id="products" class="table table-bordered table-striped text-center">
+                <table id="offers" class="table table-bordered table-striped text-center">
                     <thead>
                     <tr>
                         <td>العرض</td>
@@ -165,4 +168,30 @@
         </div>
     </div>
 
+@endsection
+@section('javascript')
+    <script>
+        $(function () {
+            $("#offers").DataTable({
+                "language": {
+                    "paginate": {
+                        "next": "التالي",
+                        "previous": "السابق"
+                    },
+                    "search": "بحث : ",
+                    "lengthMenu": "عرض _MENU_ سائقين",
+                    "entries": "سائق"
+                },
+                "info": false,
+            });
+        });
+        $(document).ready(function () {
+            $('#offers_filter').addClass('offset-8');
+        });
+
+        function myFunction() {
+            if (!confirm("هل تريد تاكيد الخذف"))
+                event.preventDefault();
+        }
+    </script>
 @endsection
