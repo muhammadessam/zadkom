@@ -101,3 +101,5 @@ Route::get('contact',function()
 })->name('contact');
 Route::post('make-contact','ContactController@store')->name('make-contact');
 Route::post('send-mail','ContactController@send')->name('send-mail');
+//Reports 
+Route::resource('report','ReportControlelr');
