@@ -1,3 +1,4 @@
+
 <nav class="mynav">
     <img src="{{asset('images/logo.png')}}">
     <ul>
