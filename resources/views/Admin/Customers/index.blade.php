@@ -103,8 +103,7 @@
                         <tbody>
                         @foreach($customers as $user)
                             <tr>
-                                <td><a class="btn btn-outline-dark"
-                                       href="{{route('customer.show', $user)}}">{{$user->name}}</a></td>
+                                <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td><span
                                         class="badge {{$user->is_active ? "badge-success" : "badge-danger"}} ">{{$user->is_active ? "فعال" : "موقوف"}}</span>
@@ -112,6 +111,8 @@
                                 <td><img style="width: 50px; height: 50px" src="{{asset($user->profile_pic)}}"
                                          alt="لم يضع صورة شخصية"></td>
                                 <td style="text-align: center">
+                                    <a class="btn btn-primary"
+                                       href="{{route('customer.show', $user)}}"><i class="fa fa-eye"></i></a>
                                     <a class="btn btn-primary" href="{{route('customer.edit', $user)}}"><i
                                             class="fa fa-edit"></i></a>
                                     <form style="display: inline-block" action="{{route('customer.destroy', $user)}}"
