@@ -38,7 +38,8 @@
                         </li>
                         <li class="list-group-item text-left d-flex justify-content-between">
                             <strong>اجمالي الرصيد : </strong>
-                            <p class="badge  badge-success"><strong>{{$driver->balance ? $driver->balance : '-'}}</strong></p>
+                            <p class="badge  badge-success">
+                                <strong>{{$driver->balance ? $driver->balance : '-'}}</strong></p>
                         </li>
                     </ul>
                     <a class="btn btn-block btn-primary" href="{{route('driver.edit', $driver)}}">تعديل</a>
@@ -51,7 +52,27 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    لم يتم الانتهاء منها
+                    <li class="list-group-item text-left d-flex justify-content-between align-items-center">
+                        <strong>رقم الحساب: </strong>
+                        @if($driver->bankAccount)
+                            <p class="badge  badge-success">
+                                <strong>{{$driver->bankAccount->account_number}}</strong></p>
+                            <div class="d-flex">
+                                <a href="{{route('edit.bank.driver.get', $driver)}}" class="btn btn-success ml-1"><i
+                                        class="fa fa-edit"></i></a>
+                                <form action="{{route('BankAccount.destroy', $driver->bankAccount->id)}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                </form>
+                            </div>
+                        @else
+                            <p class="">
+                                <a class="btn btn-primary" href="{{route('add.bank.driver.get', $driver)}}">اضافة رقم
+                                    حساب</a>
+                            </p>
+                        @endif
+                    </li>
                 </div>
                 <!-- /.card-body -->
             </div>

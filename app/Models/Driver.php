@@ -42,4 +42,9 @@ class Driver extends Model
     {
         return $this->hasMany(DriverRatsCustomer::class, 'driver_id', 'id');
     }
+
+    public function bankAccount()
+    {
+        return $this->hasOne(BankAccount::class, 'driver_id', 'id');
+    }
 }

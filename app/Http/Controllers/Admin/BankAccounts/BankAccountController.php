@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Admin\BankAccounts;
 
-use App\BankAccount;
+use App\Models\BankAccount;
+use App\Models\Driver;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -45,7 +46,7 @@ class BankAccountController extends Controller
      * @param \App\BankAccount $bankAccount
      * @return \Illuminate\Http\Response
      */
-    public function show(BankAccount $bankAccount)
+    public function show(BankAccount $BankAccount)
     {
         //
     }
@@ -56,7 +57,7 @@ class BankAccountController extends Controller
      * @param \App\BankAccount $bankAccount
      * @return \Illuminate\Http\Response
      */
-    public function edit(BankAccount $bankAccount)
+    public function edit(BankAccount $BankAccount)
     {
         //
     }
@@ -68,7 +69,7 @@ class BankAccountController extends Controller
      * @param \App\BankAccount $bankAccount
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BankAccount $bankAccount)
+    public function update(Request $request, BankAccount $BankAccount)
     {
         //
     }
@@ -79,8 +80,45 @@ class BankAccountController extends Controller
      * @param \App\BankAccount $bankAccount
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BankAccount $bankAccount)
+    public function destroy(BankAccount $BankAccount)
     {
-        //
+        $driver = $BankAccount->driver;
+        $BankAccount->delete();
+        alert()->success('تم الحذف');
+        return redirect()->route('driver.show', $driver);
+    }
+
+    public function addDriverBankAccountGet(Driver $driver)
+    {
+        return view('Admin.BankAccounts.addDriverBankAccount', compact('driver'));
+    }
+
+    public function editDriverBankAccountGet(Driver $driver)
+    {
+        return view('Admin.BankAccounts.editDriverBankAccount', compact('driver'));
+    }
+
+    public function addDriverBankAccountPost(Request $request, Driver $driver)
+    {
+        $request->validate([
+            'number' => 'required|numeric'
+        ]);
+        $driver->bankAccount()->create([
+            'account_number' => $request['number']
+        ]);
+        alert()->success('تم اضافة رقم الحساب');
+        return redirect()->route('driver.show', $driver);
+    }
+
+    public function editDriverBankAccountPost(Request $request, BankAccount $bankAccount)
+    {
+        $request->validate([
+            'number' => 'required|numeric'
+        ]);
+        $bankAccount->update([
+            'account_number' => $request['number']
+        ]);
+        alert()->success('تم تعديل رقم الحساب');
+        return redirect()->route('driver.show', $bankAccount->driver);
     }
 }

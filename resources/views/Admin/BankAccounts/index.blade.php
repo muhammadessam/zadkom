@@ -1,5 +1,8 @@
-@extends('ADmin.Layout.layout')
-@section('content')
+@extends('Admin.Layout.layout')
 
-    <h1> قيد التطوير</h1>
+@section('content')
+<h1>
+    قيد التطوير
+</h1>
+
 @endsection

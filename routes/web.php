@@ -80,6 +80,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function () 
 
     Route::prefix('BankAccounts')->group(function () {
         Route::resource('BankAccount', 'Admin\BankAccounts\BankAccountController');
+
+        Route::get('addDriverBankAccount/{driver}', 'Admin\BankAccounts\BankAccountController@addDriverBankAccountGet')->name('add.bank.driver.get');
+        Route::get('editDriverBankAccount/{driver}', 'Admin\BankAccounts\BankAccountController@editDriverBankAccountGet')->name('edit.bank.driver.get');
+        Route::post('addDriverBankAccount/{driver}', 'Admin\BankAccounts\BankAccountController@addDriverBankAccountPost')->name('add.bank.driver.post');
+        Route::patch('editDriverBankAccount/{bankAccount}', 'Admin\BankAccounts\BankAccountController@editDriverBankAccountPost')->name('edit.bank.driver.post');
+
     });
 
 
