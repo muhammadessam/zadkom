@@ -231,6 +231,25 @@
                         </ul>
                     </li>
 
+                    <li class="nav-item has-treeview {{request()->segment(2)=='ratings' ? 'menu-open' : ''}}">
+                        <a href="#" class="nav-link {{request()->segment(2)=='ratings' ? 'active' : ''}}">
+                            <i class="nav-icon fa fa-star"></i>
+                            <p>
+                                السيارات
+                                <i class="fa fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('get.cars.make')}}"
+                                   class="nav-link {{request()->segment(3)=='driverRating' ? 'active' : ''}}">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>الكل</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li class="nav-item">
                         <a href="{{route('report.index')}}" class="nav-link">
                             <i class="nav-icon fa fa-comment"></i>

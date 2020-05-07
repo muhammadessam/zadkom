@@ -7,35 +7,65 @@
         <h3>{{$rating}} <span class="fa fa-star text-warning"></span></h3>
     </div>
 
-    <div class="row d-flex  ">
+    <div class="row d-flex ">
         <!-- Profile Image -->
-        <div style="width: 49%" class="m-1 card card-primary card-outline">
+        <div style="width: 49%;">
+            <div style="height:fit-content " class="m-1 card card-primary card-outline">
 
-            <div class="card-body box-profile">
-                <div class="text-center">
-                    <img style="width: 100px;height: 100px;" class="profile-user-img img-fluid img-circle"
-                         src="{{asset($driver->user->profile_pic)}}"
-                         alt="الصورة الشخصية">
+                <div class="card-body box-profile">
+                    <div class="text-center">
+                        <img style="width: 100px;height: 100px;" class="profile-user-img img-fluid img-circle"
+                             src="{{asset($driver->user->profile_pic)}}"
+                             alt="الصورة الشخصية">
+                    </div>
+
+                    <h3 class="profile-username text-center">{{$driver->user->name}}</h3>
+
+                    <p class="text-muted text-center">سائق</p>
+
+                    <ul class="list-group list-group-unbordered mb-3">
+                        <li class="list-group-item text-left d-flex justify-content-between">
+                            <strong>البريد: </strong>
+                            <p>{{$driver->user->email}}</p>
+                        </li>
+                        <li class="list-group-item text-left d-flex justify-content-between">
+                            <strong>الهاتف: </strong>
+                            <p>{{$driver->user->phone}}</p>
+                        </li>
+                        <li class="list-group-item text-left d-flex justify-content-between">
+                            <strong>اجمالي عدد الطلبات للسائق : </strong>
+                            <p class="badge  badge-success"><strong>{{$driver->orders->count()}}</strong></p>
+                        </li>
+                    </ul>
+                    <a class="btn btn-block btn-primary" href="{{route('driver.edit', $driver)}}">تعديل</a>
                 </div>
-
-                <h3 class="profile-username text-center">{{$driver->user->name}}</h3>
-
-                <p class="text-muted text-center">سائق</p>
-
-                <ul class="list-group list-group-unbordered mb-3">
-                    <li class="list-group-item text-left d-flex justify-content-between">
-                        <strong>البريد: </strong>
-                        <p>{{$driver->user->email}}</p>
-                    </li>
-                    <li class="list-group-item text-left d-flex justify-content-between">
-                        <strong>الهاتف: </strong>
-                        <p>{{$driver->user->phone}}</p>
-                    </li>
-                </ul>
-                <a class="btn btn-block btn-primary" href="{{route('driver.edit', $driver)}}">تعديل</a>
+                <!-- /.card-body -->
             </div>
-            <!-- /.card-body -->
+            <div class="m-1 card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">معلومات الحساب البنكي</h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <ul class="list-group list-group-unbordered mb-3">
+                        <li class="list-group-item text-left d-flex justify-content-between">
+                            <strong>رقم الحساب : </strong>
+                            <p>{{$driver->user->email}}</p>
+                        </li>
+                        <li class="list-group-item text-left d-flex justify-content-between">
+                            <strong>الهاتف: </strong>
+                            <p>{{$driver->user->phone}}</p>
+                        </li>
+                        <li class="list-group-item text-left d-flex justify-content-between">
+                            <strong>اجمالي عدد الطلبات للسائق : </strong>
+                            <p class="badge  badge-success"><strong>{{$driver->orders->count()}}</strong></p>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.card-body -->
+            </div>
         </div>
+
         <!-- /.card -->
 
         <!-- About Me Box -->

@@ -61,7 +61,21 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function () 
 
     Route::prefix('cars')->group(function () {
         Route::resource('car', 'Admin\Cars\CarController');
+        // select2 route to get the cars
         Route::get('/cars/getCarModel/{carMake}', 'Admin\Cars\CarController@getCarModel')->name('getCarModel');
+        // main index for car make
+        Route::get('/getAllCarsMake', 'Admin\Cars\CarController@getAllCarsMake')->name('get.cars.make');
+
+        // add and delete for car make
+        Route::get('/addCarMake', 'Admin\Cars\CarController@addCarMainGet')->name('add.car.main.get');
+        Route::post('/addCarMake', 'Admin\Cars\CarController@addCarMainPost')->name('add.car.main.post');
+        Route::delete('/destroyCarkMake/{carmake}', 'Admin\Cars\CarController@destroyCarMake')->name('delete.car.make');
+
+        // add and delete for car model
+        Route::get('/addCarModel/{carMake}', 'Admin\Cars\CarController@addCarSubGet')->name('add.car.sub.get');
+        Route::post('/addCarModel/{carMake}', 'Admin\Cars\CarController@addCarSubPost')->name('add.car.sub.post');
+        Route::delete('/destroyCarkModel/{carModel}', 'Admin\Cars\CarController@destroyCarModel')->name('delete.car.model');
+
     });
     Route::prefix('ratings')->group(function () {
 

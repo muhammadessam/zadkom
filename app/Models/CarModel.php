@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class CarModel extends Model
 {
     protected $table = 'model';
-
+    protected $guarded = [];
+    public $timestamps = false;
 
 }

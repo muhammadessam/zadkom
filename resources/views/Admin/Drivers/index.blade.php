@@ -206,7 +206,7 @@
             });
         });
         $(document).ready(function () {
-            $('#drivers_filter').addClass('offset-8');
+            $('#drivers_filter').addClass('text-left');
         });
 
         function myFunction() {

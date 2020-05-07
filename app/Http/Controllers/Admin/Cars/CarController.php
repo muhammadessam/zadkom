@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Cars;
 
 use App\Models\Car;
 use App\Models\CarMake;
+use App\Models\CarModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -143,6 +144,57 @@ class CarController extends Controller
 
     public function getCarModel(Request $request, CarMake $carMake)
     {
-        return  $carMake->carModels->toArray();
+        return $carMake->carModels->toArray();
+    }
+
+    public function getAllCarsMake()
+    {
+        $carsmake = CarMake::all();
+        return view('Admin.Cars.mainCat.allCarsMake', compact('carsmake'));
+    }
+
+    public function addCarMainGet()
+    {
+        return view('Admin.Cars.mainCat.addCarMain');
+    }
+
+    public function destroyCarMake(Request $request, CarMake $carmake)
+    {
+        $carmake->delete();
+        alert()->success('تم الحذف');
+        return redirect()->back();
+    }
+
+    public function addCarMainPost(Request $request)
+    {
+        $request->validate([
+            'title' => 'required'
+        ]);
+        CarMake::create($request->all());
+        alert()->success('تم الاضافة');
+        return redirect()->route('get.cars.make');
+    }
+
+    public function addCarSubGet(CarMake $carMake)
+    {
+        return view('Admin.Cars.subCat.allCarsModel', compact('carMake'));
+    }
+
+    public function addCarSubPost(Request $request, CarMake $carMake)
+    {
+        $request->validate([
+            'title' => 'required'
+        ]);
+        $carMake->carModels()->create($request->all());
+        alert()->success('تم');
+        return redirect()->back();
+
+    }
+
+    public function destroyCarModel(CarModel $carModel)
+    {
+        $carModel->delete();
+        alert()->success('تم الحذف');
+        return redirect()->back();
     }
 }

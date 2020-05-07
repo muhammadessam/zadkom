@@ -9,6 +9,8 @@ class CarMake extends Model
     protected $table = 'make';
 
     protected $primaryKey = 'id';
+    public $timestamps = false;
+    protected $guarded = [];
 
     public function carModels()
     {
