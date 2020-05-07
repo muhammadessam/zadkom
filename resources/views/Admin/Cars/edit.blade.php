@@ -15,28 +15,25 @@
                                 @csrf
                                 @method('patch')
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">النوع</label>
-                                    <input type="text" name="type"
-                                           class="form-control @error('type') is-invalid @enderror" id="type"
-                                           placeholder="النوع " value="{{$car->type}}">
-                                    @error('type')
-                                    <div style="margin-top: 2px" class="alert alert-danger">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
+                                    <label> الرئيسي</label>
+                                    <select id="carmake" name="make_id" class="form-control select2"
+                                            style="width: 100%;">
+                                        @foreach(\App\Models\CarMake::all() as $make)
+                                            <option
+                                                value="{{$make->id}}" {{$make->id == $car->carMake->id ? 'selected' : ''}}>
+                                                {{$make->title}}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">الموديل</label>
-                                    <input type="text" required name="model" value="{{$car->model}}"
-                                           class="form-control @error('model') is-invalid @enderror" id="model"
-                                           placeholder="الموديل ">
-                                    @error('model')
-                                    <div style="margin-top: 2px" class="alert alert-danger">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
+                                    <label>الفرعي</label>
+                                    <select id="carModel" name="model_id" class="form-control"
+                                            style="width: 100%;">
+                                    </select>
                                 </div>
+
 
                                 <div class="form-group">
                                     <label>تاريخ التصنيع</label>
@@ -132,6 +129,52 @@
                 "info": false,
             });
         });
-        $('.select2').select2();
-    </script>
+        $('#carmake').on('change', function () {
+            let id = this.value;
+            $('#carModel').empty();
+            $.ajax({
+                url: route('getCarModel', id),
+                type: 'get',
+                dataType: 'json',
+                success: function (jsonObject) {
+
+                    let result = [];
+                    result = $.map(jsonObject, function (x) {
+                        return {
+                            id: x.id,
+                            text: x.title
+                        };
+                    });
+                    $('#carModel').select2({
+                        data: result,
+                    });
+                }
+            });
+        });
+        $(document).ready(() => {
+            $('.select2').select2();
+            let id = {{$car->carMake->id}};
+            let modeid = {{$car->carModel->id}};
+            $.ajax({
+                url: route('getCarModel', id),
+                type: 'get',
+                dataType: 'json',
+                success: function (jsonObject) {
+
+                    let result = [];
+                    result = $.map(jsonObject, function (x) {
+                        return {
+                            id: x.id,
+                            text: x.title
+                        };
+                    });
+                    $('#carModel').select2({
+                        data: result,
+                    });
+                    $('#carModel').val(modeid);
+                    $('#carModel').select2().trigger('change');
+
+                }
+            });
+        })    </script>
 @endsection

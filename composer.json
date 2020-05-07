@@ -16,7 +16,8 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "realrashid/sweet-alert": "^3.1",
-        "spatie/laravel-permission": "^3.11"
+        "spatie/laravel-permission": "^3.11",
+        "tightenco/ziggy": "^0.9.2"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.7",

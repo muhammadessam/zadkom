@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Cars;
 
 use App\Models\Car;
+use App\Models\CarMake;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -37,25 +38,23 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
-            'type' => 'required',
-            'model' => 'required',
+            'make_id' => 'required',
+            'model_id' => 'required',
             'manufacture_date' => 'required|numeric',
             'car_id_pic' => 'required',
             'license_pic' => 'required',
             'driver_id' => 'required|numeric'
         ], [], [
             'type' => 'النوع',
-            'model' => 'الموديل',
             'manufacture_date' => 'تاريخ التصنيع',
             'car_id_pic' => 'صورة هوية السيارة',
             'license_pic' => 'صورة رخصة السيارة',
             'driver_id' => 'السائق'
         ]);
         $car = Car::create([
-            'type' => $request['type'],
-            'model' => $request['model'],
+            'make_id' => $request['make_id'],
+            'model_id' => $request['model_id'],
             'manufacture_date' => $request['manufacture_date'],
             'driver_id' => $request['driver_id'],
             'car_id_pic' => $this->storeFile('Cars', 'car_id_pic', $request['driver_id']),
@@ -98,19 +97,20 @@ class CarController extends Controller
     public function update(Request $request, Car $car)
     {
         $request->validate([
-            'type' => 'required',
-            'model' => 'required',
+            'make_id' => 'required',
+            'model_id' => 'required',
             'manufacture_date' => 'required|numeric',
             'driver_id' => 'required|numeric'
         ], [], [
-            'type' => 'النوع',
+            'make_id' => 'الرئيسي',
+            'model_id' => 'الفرعي',
             'model' => 'الموديل',
             'manufacture_date' => 'تاريخ التصنيع',
             'driver_id' => 'السائق'
         ]);
         $car->update([
-            'type' => $request['type'],
-            'model' => $request['model'],
+            'make_id' => $request['make_id'],
+            'model_id' => $request['model_id'],
             'manufacture_date' => $request['manufacture_date'],
             'driver_id' => $request['driver_id'],
         ]);
@@ -139,5 +139,10 @@ class CarController extends Controller
         $car->delete();
         alert()->success('تم', 'تم الحذف بنجاح');
         return back();
+    }
+
+    public function getCarModel(Request $request, CarMake $carMake)
+    {
+        return  $carMake->carModels->toArray();
     }
 }

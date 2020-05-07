@@ -15,7 +15,6 @@
                         <thead>
                         <tr style="text-align: center">
                             <th>النوع</th>
-                            <th>الموديل</th>
                             <th>تاريخ التصنيع</th>
                             <th>هوية السيارة</th>
                             <th>رخصة السيارة</th>
@@ -27,7 +26,6 @@
                         @foreach($cars as $car)
                             <tr style="text-align: center">
                                 <td>{{$car->type}}</td>
-                                <td>{{$car->model}}</td>
                                 <td>{{$car->manufacture_date}}</td>
                                 <td><img style="width: 50px;height: 50px" src="{{asset($car->car_id_pic)}}"
                                          alt="هوية السيارة"></td>

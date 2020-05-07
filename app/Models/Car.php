@@ -12,4 +12,12 @@ class Car extends Model
     {
         return $this->belongsTo(Driver::class, 'driver_id', 'id');
     }
+
+    public function carMake(){
+        return $this->belongsTo(CarMake::class, 'make_id', 'id');
+    }
+
+    public function CarModel(){
+        return $this->belongsTo(CarModel::class, 'model_id', 'id');
+    }
 }

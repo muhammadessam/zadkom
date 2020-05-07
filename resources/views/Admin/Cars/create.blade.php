@@ -13,28 +13,22 @@
 
                             <form action="{{route('car.store')}}" method="post" enctype="multipart/form-data">
                                 @csrf
+
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">النوع</label>
-                                    <input type="text" name="type"
-                                           class="form-control @error('type') is-invalid @enderror" id="type"
-                                           placeholder="النوع " value="{{old('type')}}">
-                                    @error('type')
-                                    <div style="margin-top: 2px" class="alert alert-danger">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
+                                    <label> الرئيسي</label>
+                                    <select id="carmake" name="make_id" class="form-control select2"
+                                            style="width: 100%;">
+                                        @foreach(\App\Models\CarMake::all() as $make)
+                                            <option value="{{$make->id}}">{{$make->title}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">الموديل</label>
-                                    <input type="text" required name="model" value="{{old('model')}}"
-                                           class="form-control @error('model') is-invalid @enderror" id="model"
-                                           placeholder="الموديل ">
-                                    @error('model')
-                                    <div style="margin-top: 2px" class="alert alert-danger">
-                                        {{$message}}
-                                    </div>
-                                    @enderror
+                                    <label>الفرعي</label>
+                                    <select id="carModel" name="model_id" class="form-control"
+                                            style="width: 100%;">
+                                    </select>
                                 </div>
 
                                 <div class="form-group">
@@ -132,6 +126,48 @@
                 "info": false,
             });
         });
-        $('.select2').select2();
+        $('#carmake').on('change', function () {
+            let id = this.value;
+            $('#carModel').empty();
+            $.ajax({
+                url: route('getCarModel', id),
+                type: 'get',
+                dataType: 'json',
+                success: function (jsonObject) {
+
+                    let result = [];
+                    result = $.map(jsonObject, function (x) {
+                        return {
+                            id: x.id,
+                            text: x.title
+                        };
+                    });
+                    $('#carModel').select2({
+                        data: result,
+                    });
+                }
+            });
+        });
+        $(document).ready(() => {
+            $('.select2').select2();
+            $.ajax({
+                url: route('getCarModel', 1),
+                type: 'get',
+                dataType: 'json',
+                success: function (jsonObject) {
+
+                    let result = [];
+                    result = $.map(jsonObject, function (x) {
+                        return {
+                            id: x.id,
+                            text: x.title
+                        };
+                    });
+                    $('#carModel').select2({
+                        data: result,
+                    });
+                }
+            });
+        })
     </script>
 @endsection

@@ -1,7 +1,7 @@
 @extends('Admin.Layout.layout')
 @section('content')
     @if($orders->count())
-        <div class="driver_orders">
+        <div class="d;river_orders">
             <h3> طلبات السائق</h3>
             <h5>{{$orders[0]->driver->user->name}}</h5>
             <table class="table">

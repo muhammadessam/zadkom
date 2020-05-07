@@ -71,7 +71,7 @@
         <div class="col-10 card offset-1">
             <div class="card-header d-flex justify-content-lg-between">
                 <h3 class="card-title">كل العروض المقدمة من السائق</h3>
-                
+
             </div>
             <div class="card-body card-primary">
                 <table id="offers" class="table table-bordered table-striped text-center">
@@ -123,7 +123,7 @@
                             <thead>
                             <tr style="text-align: center">
                                 <th>النوع</th>
-                                <th>الموديل</th>
+                                <th>الفرعي</th>
                                 <th>تاريخ التصنيع</th>
                                 <th>هوية السيارة</th>
                                 <th>رخصة السيارة</th>
@@ -132,8 +132,8 @@
                             </thead>
                             <tbody>
                             <tr style="text-align: center">
-                                <td>{{$driver->car->type}}</td>
-                                <td>{{$driver->car->model}}</td>
+                                <td>{{$driver->car->carMake->title}}</td>
+                                <td>{{$driver->car->CarModel->title}}</td>
                                 <td>{{$driver->car->manufacture_date}}</td>
                                 <td><img style="width: 50px;height: 50px" src="{{asset($driver->car->car_id_pic)}}"
                                          alt="هوية السيارة"></td>

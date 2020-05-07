@@ -8,9 +8,68 @@
     </ul>
     <ul class="navbar-nav mr-auto">
         <!-- Messages Dropdown Menu -->
+    {{--        <li class="nav-item dropdown">--}}
+    {{--            <a class="nav-link" data-toggle="dropdown" href="#">--}}
+    {{--                <i class="fa fa-comments-o"></i>--}}
+    {{--                <span class="badge badge-danger navbar-badge">3</span>--}}
+    {{--            </a>--}}
+    {{--            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">--}}
+    {{--                <div class="dropdown-divider"></div>--}}
+    {{--                <a href="#" class="dropdown-item">--}}
+    {{--                    <!-- Message Start -->--}}
+    {{--                    <div class="media">--}}
+    {{--                        <img src="{{asset('dist/img/user8-128x128.jpg')}}" alt="User Avatar"--}}
+    {{--                             class="img-size-50 img-circle ml-3">--}}
+    {{--                        <div class="media-body">--}}
+    {{--                            <h3 class="dropdown-item-title">--}}
+    {{--                                المستخدم الاول--}}
+    {{--                                <span class="float-left text-sm text-muted"><i class="fa fa-star"></i></span>--}}
+    {{--                            </h3>--}}
+    {{--                            <p class="text-sm">اختبار</p>--}}
+    {{--                            <p class="text-sm text-muted"><i class="fa fa-clock-o mr-1"></i> 4 ساعات قبل</p>--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                    <!-- Message End -->--}}
+    {{--                </a>--}}
+    {{--                <div class="dropdown-divider"></div>--}}
+
+    {{--                <a href="#" class="dropdown-item dropdown-footer">مشاهدة الكل</a>--}}
+    {{--            </div>--}}
+    {{--        </li>--}}
+    <!-- Notifications Dropdown Menu -->
+        {{--        <li class="nav-item dropdown">--}}
+        {{--            <a class="nav-link" data-toggle="dropdown" href="#">--}}
+        {{--                <i class="fa fa-bell-o"></i>--}}
+        {{--                <span class="badge badge-warning navbar-badge">15</span>--}}
+        {{--            </a>--}}
+        {{--            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">--}}
+        {{--                <span class="dropdown-item dropdown-header">15 نوتیفیکیشن</span>--}}
+        {{--                <div class="dropdown-divider"></div>--}}
+        {{--                <a href="#" class="dropdown-item">--}}
+        {{--                    <i class="fa fa-envelope ml-2"></i> 4 پیام جدید--}}
+        {{--                    <span class="float-left text-muted text-sm">3 دقیقه</span>--}}
+        {{--                </a>--}}
+        {{--                <div class="dropdown-divider"></div>--}}
+        {{--                <a href="#" class="dropdown-item">--}}
+        {{--                    <i class="fa fa-users ml-2"></i> 8 درخواست دوستی--}}
+        {{--                    <span class="float-left text-muted text-sm">12 ساعت</span>--}}
+        {{--                </a>--}}
+        {{--                <div class="dropdown-divider"></div>--}}
+        {{--                <a href="#" class="dropdown-item">--}}
+        {{--                    <i class="fa fa-file ml-2"></i> 3 گزارش جدید--}}
+        {{--                    <span class="float-left text-muted text-sm">2 روز</span>--}}
+        {{--                </a>--}}
+        {{--                <div class="dropdown-divider"></div>--}}
+        {{--                <a href="#" class="dropdown-item dropdown-footer">مشاهده همه نوتیفیکیشن</a>--}}
+        {{--            </div>--}}
+        {{--        </li>--}}
+        <li class="nav-item">
+            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
+                    class="fa fa-th-large"></i></a>
+        </li>
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
-                <i class="fa fa-comments-o"></i>
+                <i class="fa fa-user-circle-o"></i>
                 <span class="badge badge-danger navbar-badge">3</span>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
@@ -18,60 +77,25 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="{{asset('dist/img/user8-128x128.jpg')}}" alt="User Avatar" class="img-size-50 img-circle ml-3">
+                        <img src="{{asset('dist/img/user8-128x128.jpg')}}" alt="User Avatar"
+                             class="img-size-50 img-circle ml-3">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
-                                المستخدم الاول
+                                {{auth()->user()->name}}
                                 <span class="float-left text-sm text-muted"><i class="fa fa-star"></i></span>
                             </h3>
-                            <p class="text-sm">اختبار</p>
-                            <p class="text-sm text-muted"><i class="fa fa-clock-o mr-1"></i> 4 ساعات قبل</p>
+                            <p class="text-sm">{{auth()->user()->email}}</p>
                         </div>
                     </div>
                     <!-- Message End -->
                 </a>
                 <div class="dropdown-divider"></div>
 
-                <a href="#" class="dropdown-item dropdown-footer">مشاهدة الكل</a>
+                <form action="{{route('AdminLogout')}}" method="post">
+                    @csrf
+                    <button title="Logout" class="dropdown-item dropdown-footer" type="submit">تسجيل الخروج</button>
+                </form>
             </div>
-        </li>
-        <!-- Notifications Dropdown Menu -->
-{{--        <li class="nav-item dropdown">--}}
-{{--            <a class="nav-link" data-toggle="dropdown" href="#">--}}
-{{--                <i class="fa fa-bell-o"></i>--}}
-{{--                <span class="badge badge-warning navbar-badge">15</span>--}}
-{{--            </a>--}}
-{{--            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">--}}
-{{--                <span class="dropdown-item dropdown-header">15 نوتیفیکیشن</span>--}}
-{{--                <div class="dropdown-divider"></div>--}}
-{{--                <a href="#" class="dropdown-item">--}}
-{{--                    <i class="fa fa-envelope ml-2"></i> 4 پیام جدید--}}
-{{--                    <span class="float-left text-muted text-sm">3 دقیقه</span>--}}
-{{--                </a>--}}
-{{--                <div class="dropdown-divider"></div>--}}
-{{--                <a href="#" class="dropdown-item">--}}
-{{--                    <i class="fa fa-users ml-2"></i> 8 درخواست دوستی--}}
-{{--                    <span class="float-left text-muted text-sm">12 ساعت</span>--}}
-{{--                </a>--}}
-{{--                <div class="dropdown-divider"></div>--}}
-{{--                <a href="#" class="dropdown-item">--}}
-{{--                    <i class="fa fa-file ml-2"></i> 3 گزارش جدید--}}
-{{--                    <span class="float-left text-muted text-sm">2 روز</span>--}}
-{{--                </a>--}}
-{{--                <div class="dropdown-divider"></div>--}}
-{{--                <a href="#" class="dropdown-item dropdown-footer">مشاهده همه نوتیفیکیشن</a>--}}
-{{--            </div>--}}
-{{--        </li>--}}
-        <li class="nav-item">
-            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
-                    class="fa fa-th-large"></i></a>
-        </li>
-        <li class="nav-item">
-            <form action="{{route('AdminLogout')}}" method="post">
-                @csrf
-                <button title="Logout" class="btn nav-link" type="submit"><i
-                        class="fa fa-user"></i></button>
-            </form>
         </li>
     </ul>
 </nav>
