@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Admin\BankAccounts;
 
-use App\BankAccount;
+use App\Models\BankAccount;
+use App\Models\Driver;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -82,5 +83,39 @@ class BankAccountController extends Controller
     public function destroy(BankAccount $bankAccount)
     {
         //
+    }
+
+    public function addDriverBankAccountGet(Driver $driver)
+    {
+        return view('Admin.BankAccounts.addDriverBankAccount', compact('driver'));
+    }
+
+    public function editDriverBankAccountGet(Driver $driver)
+    {
+        return view('Admin.BankAccounts.editDriverBankAccount', compact('driver'));
+    }
+
+    public function addDriverBankAccountPost(Request $request, Driver $driver)
+    {
+        $request->validate([
+            'number' => 'required|numeric'
+        ]);
+        $driver->bankAccount()->create([
+            'account_number' => $request['number']
+        ]);
+        alert()->success('تم اضافة رقم الحساب');
+        return redirect()->route('driver.show', $driver);
+    }
+
+    public function editDriverBankAccountPost(Request $request, BankAccount $bankAccount)
+    {
+        $request->validate([
+            'number' => 'required|numeric'
+        ]);
+        $bankAccount->update([
+            'account_number' => $request['number']
+        ]);
+        alert()->success('تم تعديل رقم الحساب');
+        return redirect()->route('driver.show', $bankAccount->driver);
     }
 }

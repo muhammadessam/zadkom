@@ -15,6 +15,8 @@ class CreateBankAccountsTable extends Migration
     {
         Schema::create('bank_accounts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('account_number');
+            $table->unsignedBigInteger('driver_id');
             $table->timestamps();
         });
     }
