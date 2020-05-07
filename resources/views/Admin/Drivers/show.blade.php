@@ -36,6 +36,10 @@
                             <strong>اجمالي عدد الطلبات للسائق : </strong>
                             <p class="badge  badge-success"><strong>{{$driver->orders->count()}}</strong></p>
                         </li>
+                        <li class="list-group-item text-left d-flex justify-content-between">
+                            <strong>اجمالي الرصيد : </strong>
+                            <p class="badge  badge-success"><strong>{{$driver->balance ? $driver->balance : '-'}}</strong></p>
+                        </li>
                     </ul>
                     <a class="btn btn-block btn-primary" href="{{route('driver.edit', $driver)}}">تعديل</a>
                 </div>
@@ -47,20 +51,7 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <ul class="list-group list-group-unbordered mb-3">
-                        <li class="list-group-item text-left d-flex justify-content-between">
-                            <strong>رقم الحساب : </strong>
-                            <p>{{$driver->user->email}}</p>
-                        </li>
-                        <li class="list-group-item text-left d-flex justify-content-between">
-                            <strong>الهاتف: </strong>
-                            <p>{{$driver->user->phone}}</p>
-                        </li>
-                        <li class="list-group-item text-left d-flex justify-content-between">
-                            <strong>اجمالي عدد الطلبات للسائق : </strong>
-                            <p class="badge  badge-success"><strong>{{$driver->orders->count()}}</strong></p>
-                        </li>
-                    </ul>
+                    لم يتم الانتهاء منها
                 </div>
                 <!-- /.card-body -->
             </div>
@@ -152,7 +143,7 @@
                         <table id="drivers" class="table table-bordered table-striped">
                             <thead>
                             <tr style="text-align: center">
-                                <th>النوع</th>
+                                <th>الرئيسي</th>
                                 <th>الفرعي</th>
                                 <th>تاريخ التصنيع</th>
                                 <th>هوية السيارة</th>
@@ -214,7 +205,7 @@
             });
         });
         $(document).ready(function () {
-            $('#offers_filter').addClass('offset-8');
+            $('#offers_filter').addClass('text-left');
         });
 
         function myFunction() {
