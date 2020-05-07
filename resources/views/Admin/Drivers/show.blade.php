@@ -57,12 +57,19 @@
                         @if($driver->bankAccount)
                             <p class="badge  badge-success">
                                 <strong>{{$driver->bankAccount->account_number}}</strong></p>
-                            <div>
-                                <a href="{{route('edit.bank.driver.get', $driver)}}" class="btn btn-success"><i class="fa fa-edit"></i></a>
+                            <div class="d-flex">
+                                <a href="{{route('edit.bank.driver.get', $driver)}}" class="btn btn-success ml-1"><i
+                                        class="fa fa-edit"></i></a>
+                                <form action="{{route('BankAccount.destroy', $driver->bankAccount->id)}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                </form>
                             </div>
                         @else
                             <p class="">
-                                <a class="btn btn-primary" href="{{route('add.bank.driver.get', $driver)}}">اضافة رقم حساب</a>
+                                <a class="btn btn-primary" href="{{route('add.bank.driver.get', $driver)}}">اضافة رقم
+                                    حساب</a>
                             </p>
                         @endif
                     </li>

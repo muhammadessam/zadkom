@@ -46,7 +46,7 @@ class BankAccountController extends Controller
      * @param \App\BankAccount $bankAccount
      * @return \Illuminate\Http\Response
      */
-    public function show(BankAccount $bankAccount)
+    public function show(BankAccount $BankAccount)
     {
         //
     }
@@ -57,7 +57,7 @@ class BankAccountController extends Controller
      * @param \App\BankAccount $bankAccount
      * @return \Illuminate\Http\Response
      */
-    public function edit(BankAccount $bankAccount)
+    public function edit(BankAccount $BankAccount)
     {
         //
     }
@@ -69,7 +69,7 @@ class BankAccountController extends Controller
      * @param \App\BankAccount $bankAccount
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BankAccount $bankAccount)
+    public function update(Request $request, BankAccount $BankAccount)
     {
         //
     }
@@ -80,9 +80,12 @@ class BankAccountController extends Controller
      * @param \App\BankAccount $bankAccount
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BankAccount $bankAccount)
+    public function destroy(BankAccount $BankAccount)
     {
-        //
+        $driver = $BankAccount->driver;
+        $BankAccount->delete();
+        alert()->success('تم الحذف');
+        return redirect()->route('driver.show', $driver);
     }
 
     public function addDriverBankAccountGet(Driver $driver)
