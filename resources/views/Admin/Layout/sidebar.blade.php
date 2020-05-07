@@ -231,8 +231,8 @@
                         </ul>
                     </li>
 
-                    <li class="nav-item has-treeview {{request()->segment(2)=='ratings' ? 'menu-open' : ''}}">
-                        <a href="#" class="nav-link {{request()->segment(2)=='ratings' ? 'active' : ''}}">
+                    <li class="nav-item has-treeview {{request()->segment(2)=='cars' ? 'menu-open' : ''}}">
+                        <a href="#" class="nav-link {{request()->segment(2)=='cars' ? 'active' : ''}}">
                             <i class="nav-icon fa fa-star"></i>
                             <p>
                                 السيارات
@@ -242,7 +242,26 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{{route('get.cars.make')}}"
-                                   class="nav-link {{request()->segment(3)=='driverRating' ? 'active' : ''}}">
+                                   class="nav-link {{request()->segment(2)=='cars' ? 'active' : ''}}">
+                                    <i class="fa fa-circle-o nav-icon"></i>
+                                    <p>الكل</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item has-treeview {{request()->segment(2)=='BankAccounts' ? 'menu-open' : ''}}">
+                        <a href="#" class="nav-link {{request()->segment(2)=='BankAccounts' ? 'active' : ''}}">
+                            <i class="nav-icon fa fa-star"></i>
+                            <p>
+                                الحسابات البنكية
+                                <i class="fa fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('BankAccount.index')}}"
+                                   class="nav-link {{request()->segment(3)=='BankAccount' ? 'active' : ''}}">
                                     <i class="fa fa-circle-o nav-icon"></i>
                                     <p>الكل</p>
                                 </a>

@@ -77,6 +77,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin']], function () 
         Route::delete('/destroyCarkModel/{carModel}', 'Admin\Cars\CarController@destroyCarModel')->name('delete.car.model');
 
     });
+
+    Route::prefix('BankAccounts')->group(function () {
+        Route::resource('BankAccount', 'Admin\BankAccounts\BankAccountController');
+    });
+
+
     Route::prefix('ratings')->group(function () {
 
         Route::resource('driverRating', 'Admin\Ratings\CustomerRatsDriversController');

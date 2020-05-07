@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin\BankAccounts;
 
 use App\BankAccount;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class BankAccountController extends Controller
 {
@@ -14,7 +15,7 @@ class BankAccountController extends Controller
      */
     public function index()
     {
-        //
+        return view('Admin.BankAccounts.index');
     }
 
     /**
@@ -30,7 +31,7 @@ class BankAccountController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +42,7 @@ class BankAccountController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\BankAccount  $bankAccount
+     * @param \App\BankAccount $bankAccount
      * @return \Illuminate\Http\Response
      */
     public function show(BankAccount $bankAccount)
@@ -52,7 +53,7 @@ class BankAccountController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\BankAccount  $bankAccount
+     * @param \App\BankAccount $bankAccount
      * @return \Illuminate\Http\Response
      */
     public function edit(BankAccount $bankAccount)
@@ -63,8 +64,8 @@ class BankAccountController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\BankAccount  $bankAccount
+     * @param \Illuminate\Http\Request $request
+     * @param \App\BankAccount $bankAccount
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, BankAccount $bankAccount)
@@ -75,7 +76,7 @@ class BankAccountController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\BankAccount  $bankAccount
+     * @param \App\BankAccount $bankAccount
      * @return \Illuminate\Http\Response
      */
     public function destroy(BankAccount $bankAccount)
