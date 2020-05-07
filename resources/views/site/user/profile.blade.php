@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="row store-info">
-                @if($myuser->store == null && $myuser->driver == null)
+                @if($myuser->store == null )
                     <h3>انت لم تسجل كا متجر بعد .</h3>
                 @else
                     <h4> {{$myuser->store->name}} <small>: متجر </small></h4>
@@ -72,10 +72,10 @@
                 </li>
                 @if($myuser->driver == null && $myuser->store == null)
                 <li class="nav-item">
-                    <a class="nav-link" href="#">تقديم طلب سائق</a>
+                    <a class="nav-link" href="{{route('make_driver')}}"> عمل حساب سائق</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">تقديم طلب متجر</a>
+                <a class="nav-link" href="{{route('make_store')}}"> عمل حساب متجر</a>
                 </li>
                 @endif
                 <li class="nav-item">

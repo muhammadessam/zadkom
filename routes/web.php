@@ -122,3 +122,15 @@ Route::post('make-contact', 'ContactController@store')->name('make-contact');
 Route::post('send-mail', 'ContactController@send')->name('send-mail');
 //Reports
 Route::resource('report', 'ReportControlelr');
+//create driver and store
+Route::get('make_driver','UserDriverController@make')->name('make_driver');
+Route::post('make_driver','UserDriverController@new')->name('new_driver');
+Route::get('make_store','UserStoreController@make')->name('make_store');
+Route::post('make_store','UserStoreController@new')->name('new_store');
+//Address
+Route::get('create_country','AddressController@createCountry')->name('create_country');
+Route::get('store_country','AddressController@storeCountry')->name('store_country');
+Route::get('create_city','AddressController@createCity')->name('create_city');
+Route::get('store_city','AddressController@storeCity')->name('store_city');
+Route::get('create_state','AddressController@createState')->name('create_state');
+Route::get('store_state','AddressController@storeState')->name('store_state');

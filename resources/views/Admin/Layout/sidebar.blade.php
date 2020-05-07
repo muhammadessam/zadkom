@@ -279,6 +279,27 @@
                     </li>
 
                     <li class="nav-item">
+                        <a href="{{route('create_country')}}" class="nav-link">
+                            <i class="nav-icon fa fa-address-card"></i>
+                            <p>
+                                الدول </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('create_city')}}" class="nav-link">
+                            <i class="nav-icon fa fa-address-card"></i>
+                            <p>
+                                المدن</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('create_state')}}" class="nav-link">
+                            <i class="nav-icon fa fa-address-card"></i>
+                            <p> 
+                                الاحياء</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{route('all-contacts')}}" class="nav-link">
                             <i class="nav-icon fa fa-address-card"></i>
                             <p>
